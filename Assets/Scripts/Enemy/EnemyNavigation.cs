@@ -7,6 +7,7 @@ public class EnemyNavigation : MonoBehaviour
 {
     //References
     private NavMeshAgent navAgent;
+    private Animator anim;
     private Transform player;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
@@ -14,20 +15,13 @@ public class EnemyNavigation : MonoBehaviour
     private Vector3 walkPoint;
     bool walkPointSet;
     [SerializeField] float walkPointRange;
-
-   // //Attacking
-   // [SerializeField] GameObject projectile;
-   // [SerializeField] Transform attackPoint;
     [SerializeField] float attackRange;
-   // [SerializeField] float attackResetTime;
-   // [SerializeField] float attackForce;
-   // bool alreadyAttacked;
 
     //States
     [SerializeField] float sightRange;
     bool playerInSightRange, playerInAttackRange;
-    bool isRanged;
-
+    public bool isRanged;
+    public bool isMelee;
 
 
     private void Awake()
@@ -38,7 +32,7 @@ public class EnemyNavigation : MonoBehaviour
 
     private void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -65,10 +59,12 @@ public class EnemyNavigation : MonoBehaviour
         if (!walkPointSet)
         {
             SearchWalkPoint();
+            //anim.SetBool("isMoving", false);
         }
         if (walkPointSet)
         {
             navAgent.SetDestination(walkPoint);
+           // anim.SetBool("isMoving", true);
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -102,7 +98,11 @@ public class EnemyNavigation : MonoBehaviour
 
         if (isRanged)
         {
-            GetComponent<EnemyRanged>().canAttack = true;
+            GetComponent<EnemyRanged>().Attack();
+        }
+        if (isMelee)
+        {
+            GetComponent<EnemyMelee>().Attack();
         }
     }
 

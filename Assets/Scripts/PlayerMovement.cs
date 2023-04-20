@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //References
     private CharacterController controller;
+    GunSystem gunSystem;
     private Camera cam;
 
     [Header("Player Stats")]
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        gunSystem = GetComponent<GunSystem>();
         cam = Camera.main;
 
         currentSpeed = baseSpeed;
@@ -29,11 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        MouseLook();
         Movement();
-        facingDir = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
-
-        
+        MouseLook();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -43,8 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        facingDir = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
+
         move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        controller.Move(move * currentSpeed * Time.deltaTime);
+        controller.Move(move * Time.deltaTime * currentSpeed);
 
         if (move != Vector3.zero)
         {
@@ -63,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             pointToLook = mousePos.GetPoint(rayLength);
 
             transform.LookAt(facingDir);
+            gunSystem.gunBarrel.transform.LookAt(facingDir);
         }
     }
 

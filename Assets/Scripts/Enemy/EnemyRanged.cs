@@ -12,29 +12,31 @@ public class EnemyRanged : MonoBehaviour
     [SerializeField] float attackResetTime;
     [SerializeField] float attackForce;
 
-    public bool canAttack = true;
+    public bool canAttack;
     bool alreadyAttacked;
 
     private void Start()
     {
         enemyNav = GetComponent<EnemyNavigation>();
+
+        canAttack = true;
     }
 
     private void Update()
     {
-        if (canAttack)
-        {
-            var currentBullet = Instantiate(projectile, attackPoint.position, attackPoint.rotation);
-            currentBullet.GetComponent<Rigidbody>().velocity = attackPoint.forward * attackForce;
 
-            canAttack = false;
-            Invoke("ResetAttack", attackResetTime);
-        }
     }
 
     public void Attack()
     {
+        if (canAttack)
+        {
+            canAttack = false;
+            Invoke("ResetAttack", attackResetTime);
 
+            var currentBullet = Instantiate(projectile, attackPoint.position, attackPoint.rotation);
+            currentBullet.GetComponent<Rigidbody>().velocity = attackPoint.forward * attackForce;
+        }
 
     }
 

@@ -9,7 +9,7 @@ public class PrimaryBullet : MonoBehaviour
 
     private void Update()
     {
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 0.7f);
     }
 
 

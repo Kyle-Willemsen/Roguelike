@@ -8,7 +8,7 @@ public class GunSystem : MonoBehaviour
 {
     [Header("References")]
     private PlayerMovement playerMovement;
-    private Rigidbody rb;
+    //private Rigidbody rb;
     public GameObject gun;
     public Transform gunBarrel;
     public GameObject automaticBullet;
@@ -27,7 +27,7 @@ public class GunSystem : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
 
         canShootPrimary = true;
         canShootSecondary = true;
@@ -36,13 +36,15 @@ public class GunSystem : MonoBehaviour
     {
         Shoot();
 
-        gun.transform.LookAt(playerMovement.facingDir);
+        //gun.transform.LookAt(playerMovement.facingDir);
     }
     private void Shoot()
     {
         if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary)
         {
             canShootPrimary = false;
+            canShootSecondary = false;
+
             Invoke("ResetPrimary", primaryFireRate);
 
             var currentBullet = Instantiate(automaticBullet, gunBarrel.position, gunBarrel.rotation);
@@ -52,6 +54,7 @@ public class GunSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1) && canShootSecondary)
         {
             canShootSecondary = false;
+
             Invoke("ResetSecondary", secondaryFireRate);
 
             var currentBullet = Instantiate(sniperBullet, gunBarrel.position, gunBarrel.rotation);
@@ -62,6 +65,7 @@ public class GunSystem : MonoBehaviour
     private void ResetPrimary()
     {
         canShootPrimary = true;
+        canShootSecondary = true;
     }
     private void ResetSecondary()
     {
