@@ -12,12 +12,17 @@ public class EnemyRanged : MonoBehaviour
     [SerializeField] float attackResetTime;
     [SerializeField] float attackForce;
 
+
     public bool canAttack;
-    bool alreadyAttacked;
+    public bool isTrippleAttack;
+
+    Animator anim;
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         enemyNav = GetComponent<EnemyNavigation>();
+        
 
         canAttack = true;
     }
@@ -27,7 +32,7 @@ public class EnemyRanged : MonoBehaviour
 
     }
 
-    public void Attack()
+    public void NormalAttack()
     {
         if (canAttack)
         {
@@ -37,11 +42,31 @@ public class EnemyRanged : MonoBehaviour
             var currentBullet = Instantiate(projectile, attackPoint.position, attackPoint.rotation);
             currentBullet.GetComponent<Rigidbody>().velocity = attackPoint.forward * attackForce;
         }
+    }
 
+    public void Wizard()
+    {
+        if (canAttack)
+        {
+            anim.SetBool("Attack", true);
+            canAttack = false;
+
+        }
+
+    }
+    public void ShootProjectile()
+    {
+        var currentBullet = Instantiate(projectile, attackPoint.position, attackPoint.rotation);
+        currentBullet.GetComponent<Rigidbody>().velocity = attackPoint.forward * attackForce;
     }
 
     private void ResetAttack()
     {
         canAttack = true;
+    }
+    private void ResetTrippleAttack()
+    {
+        anim.SetBool("Attack", false);
+        Invoke("ResetAttack", attackResetTime);
     }
 }

@@ -8,6 +8,13 @@ public class EnemyStats : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
+    public GameObject lootCurrency;
+    public GameObject lootHP;
+    private float minDrop = 2;
+    private float maxDrop = 6;
+    public Transform lootDropPos;
+
+
     private void Awake()
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -22,12 +29,28 @@ public class EnemyStats : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            manager.numberOfEnemiesLeft--;
-            Destroy(gameObject);
+            Dead();
         }
     }
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+    }
+
+    private void Dead()
+    {
+        for (int i = 0; i < Random.Range(minDrop, maxDrop); i++)
+        {
+            var go = Instantiate(lootCurrency, lootDropPos.position + new Vector3(0, Random.Range(0.2f, 0)), Quaternion.identity);
+            go.GetComponent<LootFollow>().target = lootCurrency.transform;
+        }
+
+        int chanceOfHPDrop = 1;
+        if (Random.Range(0, 20) <= chanceOfHPDrop)
+        {
+            var got = Instantiate(lootHP, lootDropPos.position, Quaternion.identity);
+        }
+        manager.numberOfEnemiesLeft--;
+        Destroy(gameObject);
     }
 }

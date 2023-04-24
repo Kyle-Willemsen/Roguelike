@@ -22,6 +22,7 @@ public class EnemyNavigation : MonoBehaviour
     bool playerInSightRange, playerInAttackRange;
     public bool isRanged;
     public bool isMelee;
+    public bool isWizard;
 
 
     private void Awake()
@@ -98,11 +99,15 @@ public class EnemyNavigation : MonoBehaviour
 
         if (isRanged)
         {
-            GetComponent<EnemyRanged>().Attack();
+            GetComponent<EnemyRanged>().NormalAttack();
         }
         if (isMelee)
         {
             GetComponent<EnemyMelee>().Attack();
+        }
+        if (isWizard)
+        {
+            GetComponent<EnemyRanged>().Wizard();
         }
     }
 

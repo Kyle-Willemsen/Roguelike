@@ -12,13 +12,20 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Stats")]
     public float baseSpeed;
     public float currentSpeed;
+    public bool canMove;
+
+
+    [Header("Dash Stats")]
     public float dashSpeed;
     public float dashTime;
+    public bool canDash = true;
+    [SerializeField] float dashResetTimer;
 
     //Random
     [HideInInspector] public Vector3 facingDir;
     private Vector3 pointToLook;
     private Vector3 move;
+
 
     private void Start()
     {
@@ -27,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         cam = Camera.main;
 
         currentSpeed = baseSpeed;
+
+        canMove = true;
     }
 
     private void Update()
@@ -34,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         MouseLook();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine("DashCoroutine");
         }
@@ -42,15 +51,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        facingDir = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
-
-        move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        controller.Move(move * Time.deltaTime * currentSpeed);
-
-        if (move != Vector3.zero)
+        if (canMove)
         {
-            transform.LookAt(facingDir);
+            facingDir = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
+
+            move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            controller.Move(move * Time.deltaTime * currentSpeed);
+
+            if (move != Vector3.zero)
+            {
+                transform.LookAt(facingDir);
+            }
         }
+
     }
 
     private void MouseLook()
@@ -74,9 +87,12 @@ public class PlayerMovement : MonoBehaviour
 
         while (Time.time < startTime + dashTime)
         {
+            canDash = false;
             controller.Move(move * dashSpeed * Time.deltaTime);
             yield return null;
         }
+        yield return new WaitForSeconds(1.5f);
+        canDash = true;
     }
 
 

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - HPSmall
+  - Currency
   layers:
   - Default
   - TransparentFX
