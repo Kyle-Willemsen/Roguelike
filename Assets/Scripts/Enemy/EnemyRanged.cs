@@ -36,6 +36,7 @@ public class EnemyRanged : MonoBehaviour
     {
         if (canAttack)
         {
+            attackPoint.LookAt(enemyNav.player);
             canAttack = false;
             Invoke("ResetAttack", attackResetTime);
 
@@ -48,6 +49,7 @@ public class EnemyRanged : MonoBehaviour
     {
         if (canAttack)
         {
+            attackPoint.LookAt(enemyNav.player);
             anim.SetBool("Attack", true);
             canAttack = false;
 

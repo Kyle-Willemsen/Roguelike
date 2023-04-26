@@ -8,7 +8,7 @@ public class EnemyNavigation : MonoBehaviour
     //References
     private NavMeshAgent navAgent;
     private Animator anim;
-    private Transform player;
+     public Transform player;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
     //Patrolling
@@ -96,6 +96,7 @@ public class EnemyNavigation : MonoBehaviour
     {
         navAgent.SetDestination(transform.position);
         transform.LookAt(player);
+        
 
         if (isRanged)
         {
