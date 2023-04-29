@@ -41,7 +41,7 @@ public class EnemyStats : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(minDrop, maxDrop); i++)
         {
-            var go = Instantiate(lootCurrency, lootDropPos.position + new Vector3(0, Random.Range(0.2f, 0)), Quaternion.identity);
+            var go = Instantiate(lootCurrency, lootDropPos.position + new Vector3(Random.Range(0, 3f), Random.Range(0.2f, 0)), Quaternion.identity);
             go.GetComponent<LootFollow>().target = lootCurrency.transform;
         }
 

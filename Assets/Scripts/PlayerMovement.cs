@@ -21,6 +21,14 @@ public class PlayerMovement : MonoBehaviour
     public bool canDash = true;
     [SerializeField] float dashResetTimer;
 
+   //[Header("Gravity")]
+   //public LayerMask layermask;
+   //public float groundDistance = 0.4f;
+   //public bool isGrounded;
+   //public Transform groundCheck;
+   //private Vector3 velocity;
+   //public float gravity;
+
     //Random
     [HideInInspector] public Vector3 facingDir;
     private Vector3 pointToLook;
@@ -42,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         MouseLook();
+       // Gravity();
 
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
@@ -81,6 +90,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+   // private void Gravity()
+   // {
+   //     isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, layermask);
+   //
+   //     if (isGrounded && velocity.y < 0)
+   //     {
+   //         velocity.y = -2f;
+   //     }
+   //
+   //     velocity.y += gravity * Time.deltaTime;
+   //     controller.Move(velocity * Time.deltaTime);
+   // }
     private IEnumerator DashCoroutine()
     {
         float startTime = Time.time;
