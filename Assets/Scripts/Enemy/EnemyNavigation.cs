@@ -7,7 +7,7 @@ public class EnemyNavigation : MonoBehaviour
 {
     //References
     private NavMeshAgent navAgent;
-    private Animator anim;
+    //private Animator anim;
      public Transform player;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
@@ -33,7 +33,7 @@ public class EnemyNavigation : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     private void Update()
