@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     //References
     private CharacterController controller;
+    public PlayerStatsSO pStatsSO;
     GunSystem gunSystem;
     private Camera cam;
 
     [Header("Player Stats")]
-    public float baseSpeed;
+    //public float baseSpeed;
     public float currentSpeed;
     public bool canMove;
 
@@ -19,15 +21,30 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashTime;
     public bool canDash = true;
-    [SerializeField] float dashResetTimer;
+    public GameObject bomb;
 
-   //[Header("Gravity")]
-   //public LayerMask layermask;
-   //public float groundDistance = 0.4f;
-   //public bool isGrounded;
-   //public Transform groundCheck;
-   //private Vector3 velocity;
-   //public float gravity;
+
+    [Header("Invisibility")]
+    public bool isInvisible;
+    public float invisibilityCounter;
+    public GameObject mesh;
+
+    [Header("Teleport")]
+    private GameObject teleportPos;
+    public float teleportTimer;
+    public bool canNowTeleport;
+
+    //public Mesh mesh;
+
+    //[SerializeField] float dashResetTimer;
+
+    //[Header("Gravity")]
+    //public LayerMask layermask;
+    //public float groundDistance = 0.4f;
+    //public bool isGrounded;
+    //public Transform groundCheck;
+    //private Vector3 velocity;
+    //public float gravity;
 
     //Random
     [HideInInspector] public Vector3 facingDir;
@@ -41,20 +58,45 @@ public class PlayerMovement : MonoBehaviour
         gunSystem = GetComponent<GunSystem>();
         cam = Camera.main;
 
-        currentSpeed = baseSpeed;
-
+        currentSpeed = pStatsSO.BaseMoveSpeed;
+        teleportPos = GameObject.Find("TeleportPos");
         canMove = true;
+        canNowTeleport = false;
     }
 
     private void Update()
     {
         Movement();
         MouseLook();
-       // Gravity();
+        // Gravity();
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+
+        if (Input.GetKey(KeyCode.Space) && canDash)
         {
             StartCoroutine("DashCoroutine");
+            if (pStatsSO.DashBomb)
+            {
+                Instantiate(bomb, transform.position, Quaternion.identity);
+            }
+            if (pStatsSO.InvisibleAbility)
+            {
+                isInvisible = true;
+                StartCoroutine(Invisibility());
+            }
+            if (pStatsSO.TeleportDash)
+            {
+                StartCoroutine(TeleportBack());
+                teleportPos.transform.position = transform.position;
+                canNowTeleport = true;
+            }
+        }
+
+        if (canNowTeleport && Input.GetKeyDown(KeyCode.Q))
+        {
+            canNowTeleport = false;
+            controller.enabled = false;
+            transform.position = new Vector3(teleportPos.transform.position.x, teleportPos.transform.position.y, teleportPos.transform.position.z);
+            controller.enabled = true;
         }
     }
 
@@ -112,9 +154,30 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(move * dashSpeed * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(pStatsSO.DashCooldwon);
         canDash = true;
     }
 
+    private IEnumerator Invisibility()
+    {
+        //float startTime = Time.time;
+        //
+        //while (Time.time < startTime + invisibilityCounter)
+        //{
+        //    mesh.SetActive(false);
+        //    //this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1f, 1f, 1f, 0.5f);
+        //}
+        mesh.SetActive(false);
+        yield return new WaitForSeconds(invisibilityCounter);
+        mesh.SetActive(true);
+        isInvisible = false;
+        canNowTeleport = true;
+    }
 
+    private IEnumerator TeleportBack()
+    {
+        yield return new WaitForSeconds(teleportTimer);
+        canNowTeleport = false;
+        
+    }
 }

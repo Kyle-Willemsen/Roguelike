@@ -10,9 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e99bda86d8eed740aee703e073cce47, type: 3}
-  m_Name: Stats
+  m_Name: Player Stats
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  playerHealth: 47.5
   maxHealth: 100
   potionValue: 35
   potionCounter: 0
+  dashCooldwon: 1.85
+  baseMoveSpeed: 10
+  dashBomb: 0
+  invisibleAbility: 0
+  teleportDash: 0

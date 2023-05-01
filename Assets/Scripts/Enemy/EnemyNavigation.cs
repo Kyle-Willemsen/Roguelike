@@ -9,6 +9,7 @@ public class EnemyNavigation : MonoBehaviour
     private NavMeshAgent navAgent;
     //private Animator anim;
      public Transform player;
+    PlayerMovement pMovement;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
     //Patrolling
@@ -24,11 +25,12 @@ public class EnemyNavigation : MonoBehaviour
     public bool isMelee;
     public bool isWizard;
 
-
+    public bool playerInvisible;
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player").transform;
+        pMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
     private void Start()
@@ -38,7 +40,15 @@ public class EnemyNavigation : MonoBehaviour
 
     private void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (pMovement.isInvisible)
+        {
+            playerInvisible = true;
+        }
+        else
+        {
+            playerInvisible = false;
+        }
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer) && !playerInvisible;
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange)

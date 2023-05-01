@@ -457,19 +457,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0c9cc517c9103469dac30d453072dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 10
+  pStatsSO: {fileID: 11400000, guid: 9eb87db63bd26cc42a341d57104bd60a, type: 2}
   currentSpeed: 0
   canMove: 0
   dashSpeed: 50
   dashTime: 0.15
   canDash: 1
-  dashResetTimer: 0
-  layermask:
-    serializedVersion: 2
-    m_Bits: 8
-  groundDistance: 0.4
-  isGrounded: 1
-  groundCheck: {fileID: 8398040978406847482}
+  bomb: {fileID: 8496624544761263138, guid: 1c3f882b6b805154d8e5f88b30c95237, type: 3}
+  isInvisible: 0
+  invisibilityCounter: 1
+  mesh: {fileID: 5010656085857374354}
+  originalPosObj: {fileID: 0}
+  teleportTimer: 2
+  canTeleport: 1
+  canNowTeleport: 0
   facingDir: {x: 0, y: 0, z: 0}
 --- !u!114 &5751856612675824369
 MonoBehaviour:
@@ -677,8 +678,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.28503108, y: -0.075060606, z: -0.0040338635}
-    m_Extent: {x: 0.66633165, y: 1.8848879, z: 0.7713941}
+    m_Center: {x: 0.006221056, y: -0.0032901764, z: -0.0009548664}
+    m_Extent: {x: 0.9451417, y: 1.8131175, z: 0.78912956}
   m_DirtyAABB: 0
 --- !u!183 &2103298329075697797
 Cloth:
@@ -2742,6 +2743,11 @@ Cloth:
   - {x: 0.6666667, y: 0.16666667, z: 0.16666667}
   - {x: 0.5, y: 0.5, z: 0}
   m_VirtualParticleIndices: 
+--- !u!1 &5010656085857374354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7214288379389420471, guid: b6dc566e941f53841b5135b4696fbf41, type: 3}
+  m_PrefabInstance: {fileID: 2420438678650336037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5675306859429218856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8022491632388307213, guid: b6dc566e941f53841b5135b4696fbf41, type: 3}

@@ -33,5 +33,41 @@ public class PlayerStatsSO : ScriptableObject
         set { potionCounter = value; }
     }
 
+    [SerializeField] private float dashCooldwon;
 
+    public float DashCooldwon
+    {
+        get { return dashCooldwon; }
+        set { dashCooldwon = value; }
+    }
+
+    [SerializeField] private float baseMoveSpeed;
+
+    public float BaseMoveSpeed
+    {
+        get { return baseMoveSpeed; }
+        set { baseMoveSpeed = value; }
+    }
+
+
+    [SerializeField] private bool dashBomb;
+    public bool DashBomb
+    {
+        get { return dashBomb; }
+        set { dashBomb = value; }
+    }
+
+    [SerializeField] private bool invisibleAbility;
+    public bool InvisibleAbility
+    {
+        get { return invisibleAbility; }
+        set { invisibleAbility = value; }
+    }
+
+    [SerializeField] private bool teleportDash;
+    public bool TeleportDash
+    {
+        get { return teleportDash; }
+        set { teleportDash = value; }
+    }
 }
