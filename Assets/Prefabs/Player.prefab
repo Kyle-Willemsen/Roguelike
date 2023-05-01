@@ -467,9 +467,7 @@ MonoBehaviour:
   isInvisible: 0
   invisibilityCounter: 1
   mesh: {fileID: 5010656085857374354}
-  originalPosObj: {fileID: 0}
   teleportTimer: 2
-  canTeleport: 1
   canNowTeleport: 0
   facingDir: {x: 0, y: 0, z: 0}
 --- !u!114 &5751856612675824369
@@ -484,14 +482,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bbd62637fe97d42b29313e3c3bd29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSO: {fileID: 11400000, guid: 791d8a285665e1049ab27ccec9f1592c, type: 2}
   gun: {fileID: 5751856611278638918}
   gunBarrel: {fileID: 5751856612744328336}
   automaticBullet: {fileID: 2119652611795401747, guid: 6e22cc3f5e7ab2f4c909aa9235d9f018, type: 3}
   sniperBullet: {fileID: 201683083923324199, guid: 3673d7fce2677e147b0deb469fd137a7, type: 3}
   canShoot: 1
-  primaryFireRate: 0.096
-  primarySpeed: 40
   canShootPrimary: 1
+  currentAmmo: 0
   secondaryFireRate: 1.25
   secondarySpeed: 150
   canShootSecondary: 1

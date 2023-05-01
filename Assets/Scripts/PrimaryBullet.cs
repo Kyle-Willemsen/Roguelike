@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PrimaryBullet : MonoBehaviour
 {
-     public float damage;
+    public float damage;
+    [SerializeField] WeaponSO weaponSO;
     
     
      private void Update()
@@ -18,7 +19,7 @@ public class PrimaryBullet : MonoBehaviour
      {
          if (collision.gameObject.tag == "Enemy")
          {
-             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
+             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.RifleDamage);
              Destroy(gameObject);
          }
          Destroy(gameObject);

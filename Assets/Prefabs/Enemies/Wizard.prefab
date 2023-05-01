@@ -168,6 +168,9 @@ MonoBehaviour:
   isRanged: 0
   isMelee: 0
   isWizard: 1
+  canMove: 0
+  playerInvisible: 0
+  immoboliseTime: 2
 --- !u!114 &1837096935516271770
 MonoBehaviour:
   m_ObjectHideFlags: 0

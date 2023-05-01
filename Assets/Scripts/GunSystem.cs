@@ -8,6 +8,7 @@ public class GunSystem : MonoBehaviour
 {
     [Header("References")]
     PlayerMovement playerMovement;
+    public WeaponSO weaponSO;
     Animator anim;
     public GameObject gun;
     public Transform gunBarrel;
@@ -16,9 +17,8 @@ public class GunSystem : MonoBehaviour
     public bool canShoot = true;
 
     [Header("Primary Stats")]
-    public float primaryFireRate;
-    public float primarySpeed;
     public bool canShootPrimary;
+    public float currentAmmo;
 
 
     [Header("Sniper Stats")]
@@ -37,11 +37,19 @@ public class GunSystem : MonoBehaviour
 
         canShootPrimary = true;
         canShootSecondary = true;
+
+        currentAmmo = weaponSO.AmmoCapacity;
     }
     private void Update()
     {
         gun.transform.LookAt(playerMovement.facingDir);
         Shoot();
+
+        if (currentAmmo <= 0 || Input.GetKeyDown(KeyCode.R))
+        {
+            canShoot = false;
+            Invoke("Reload", weaponSO.ReloadTime);
+        }
 
         if (sniperShot)
         {
@@ -51,29 +59,35 @@ public class GunSystem : MonoBehaviour
         }
 
     }
+
+    private void Reload()
+    {
+        currentAmmo = weaponSO.AmmoCapacity;
+        canShoot = true;
+    }
     private void Shoot()
     {
         if (canShoot)
         {
-            if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary)
+            if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary && currentAmmo > 0)
             {
                 canShootPrimary = false;
                 canShootSecondary = false;
+                currentAmmo--;
 
-                Invoke("ResetPrimary", primaryFireRate);
+                Invoke("ResetPrimary", weaponSO.FireRate);
 
                 var currentBullet = Instantiate(automaticBullet, gunBarrel.position, gunBarrel.rotation);
-                currentBullet.GetComponent<Rigidbody>().velocity = gunBarrel.forward * primarySpeed;
+                currentBullet.GetComponent<Rigidbody>().velocity = gunBarrel.forward * weaponSO.BulletSpeed;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1) && canShootSecondary)
+        {
+            canShootSecondary = false;
+            playerMovement.canMove = false;
+            anim.SetBool("SniperShot", true);
 
-            if (Input.GetKeyDown(KeyCode.Mouse1) && canShootSecondary)
-            {
-                canShootSecondary = false;
-                playerMovement.canMove = false;
-                anim.SetBool("SniperShot", true);
-
-                Invoke("ResetSecondary", secondaryFireRate);
-            }
+            Invoke("ResetSecondary", secondaryFireRate);
         }
     }
 
