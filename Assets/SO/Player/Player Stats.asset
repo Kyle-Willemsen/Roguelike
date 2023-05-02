@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e99bda86d8eed740aee703e073cce47, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
-  playerHealth: 62.5
-  maxHealth: 100
+  playerHealth: 250
+  maxHealth: 250
   potionValue: 35
-  potionCounter: 3
-  dashCooldwon: 1.85
+  potionCounter: 15
+  dashCooldwon: 0.9472
   baseMoveSpeed: 10
   dashBomb: 1
-  invisibleAbility: 1
-  teleportDash: 0
+  invisibleAbility: 0
+  teleportDash: 1

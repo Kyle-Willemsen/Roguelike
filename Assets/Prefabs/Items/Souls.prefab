@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1976317342851034636}
   - component: {fileID: 1412850437832701827}
   m_Layer: 0
-  m_Name: Currency
-  m_TagString: Currency
+  m_Name: Souls
+  m_TagString: Souls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1976317344012903309}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Currency
+  m_TagString: Souls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdf741d35b6239147b28a32504a29d64, type: 2}
+  - {fileID: 2100000, guid: b990e1bde5111d4469198d912b1b3228, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

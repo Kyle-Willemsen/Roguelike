@@ -8,9 +8,10 @@ public class EnemyStats : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
-    public GameObject lootCurrency;
+    public GameObject souls;
+    public GameObject fragments;
     public GameObject lootHP;
-    private float minDrop = 2;
+    private float minDrop = 0;
     private float maxDrop = 6;
     public Transform lootDropPos;
 
@@ -41,12 +42,18 @@ public class EnemyStats : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(minDrop, maxDrop); i++)
         {
-            var go = Instantiate(lootCurrency, lootDropPos.position + new Vector3(Random.Range(0, 3f), Random.Range(0.2f, 0)), Quaternion.identity);
-            go.GetComponent<LootFollow>().target = lootCurrency.transform;
+            var go = Instantiate(souls, lootDropPos.position + new Vector3(Random.Range(0, 3f), Random.Range(0.2f, 0)), Quaternion.identity);
+            go.GetComponent<LootFollow>().target = souls.transform;
+        }
+
+        for (int i = 0; i < Random.Range(minDrop, maxDrop); i++)
+        {
+            var go = Instantiate(fragments, lootDropPos.position + new Vector3(Random.Range(0, 3f), Random.Range(0.2f, 0)), Quaternion.identity);
+            go.GetComponent<LootFollow>().target = souls.transform;
         }
 
         int chanceOfHPDrop = 1;
-        if (Random.Range(0, 20) <= chanceOfHPDrop)
+        if (Random.Range(0, 50) <= chanceOfHPDrop)
         {
             var got = Instantiate(lootHP, lootDropPos.position, Quaternion.identity);
         }

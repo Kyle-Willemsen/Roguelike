@@ -7,7 +7,7 @@ public class TestFoor : MonoBehaviour
 {
     GameManager manager;
     [SerializeField]
-    SingleValuesSO testSo;
+    SingleValuesSO noumberOfRoomsEntered;
 
 
     private void Start()
@@ -19,7 +19,7 @@ public class TestFoor : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            testSo.Value++;
+            noumberOfRoomsEntered.Value++;
 
             SceneManager.LoadScene(manager.randomScene);
         }

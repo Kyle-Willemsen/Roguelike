@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 5831906122864882775}
   - component: {fileID: 5831906122864882732}
   - component: {fileID: 11622796420211474}
-  - component: {fileID: 8084990170520191991}
   - component: {fileID: 7254253402621992393}
   m_Layer: 7
   m_Name: Ranged
@@ -172,7 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 100
-  lootCurrency: {fileID: 1976317342851034635, guid: bdb43e4e4d4bb284a9049fb2f8917052, type: 3}
+  souls: {fileID: 1976317342851034635, guid: bdb43e4e4d4bb284a9049fb2f8917052, type: 3}
+  fragments: {fileID: 1976317342851034635, guid: e8b10c1ff9373314484059c674aeda4e, type: 3}
   lootHP: {fileID: 9206877563051673848, guid: cb8f11517ded2bc41b8cd60c895c451c, type: 3}
   lootDropPos: {fileID: 5831906122109721765}
 --- !u!114 &5831906122864882732
@@ -218,22 +218,7 @@ MonoBehaviour:
   isRanged: 1
   isMelee: 0
   isWizard: 0
-  canMove: 0
   playerInvisible: 0
-  immoboliseTime: 2
---- !u!114 &8084990170520191991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5831906122864882772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f416d2d9fd88d3f4498a69e002974418, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
 --- !u!54 &7254253402621992393
 Rigidbody:
   m_ObjectHideFlags: 0

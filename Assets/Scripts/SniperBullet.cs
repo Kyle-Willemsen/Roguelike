@@ -20,7 +20,7 @@ public class SniperBullet : MonoBehaviour
             }
         }
 
-        else if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.SniperDamage);
             Destroy(gameObject);

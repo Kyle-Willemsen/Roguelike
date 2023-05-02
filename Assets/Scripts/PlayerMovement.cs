@@ -34,9 +34,6 @@ public class PlayerMovement : MonoBehaviour
     public float teleportTimer;
     public bool canNowTeleport;
 
-    //public Mesh mesh;
-
-    //[SerializeField] float dashResetTimer;
 
     //[Header("Gravity")]
     //public LayerMask layermask;
@@ -160,13 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Invisibility()
     {
-        //float startTime = Time.time;
-        //
-        //while (Time.time < startTime + invisibilityCounter)
-        //{
-        //    mesh.SetActive(false);
-        //    //this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1f, 1f, 1f, 0.5f);
-        //}
+
         mesh.SetActive(false);
         yield return new WaitForSeconds(invisibilityCounter);
         mesh.SetActive(true);

@@ -467,7 +467,7 @@ MonoBehaviour:
   isInvisible: 0
   invisibilityCounter: 1
   mesh: {fileID: 5010656085857374354}
-  teleportTimer: 2
+  teleportTimer: 1.7
   canNowTeleport: 0
   facingDir: {x: 0, y: 0, z: 0}
 --- !u!114 &5751856612675824369
@@ -507,7 +507,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runeMaxHealth: {fileID: 11400000, guid: ac08c19ebe4e09947866a9e7d0f41731, type: 2}
   pStatsSo: {fileID: 11400000, guid: 9eb87db63bd26cc42a341d57104bd60a, type: 2}
-  currencyLoot: 60
+  soulsValue: 20
+  fragmentsValue: 30
 --- !u!95 &5751856612675824371
 Animator:
   serializedVersion: 4

@@ -10,7 +10,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] PlayerStatsSO pStatsSo;
 
    // public bool maxHealthSOActive;
-    public float currencyLoot;
+    public float soulsValue;
+    public float fragmentsValue;
 
 
     private void Start()
@@ -81,9 +82,14 @@ public class PlayerStats : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "Currency")
+        if (other.gameObject.tag == "Souls")
         {
-            manager.totalCurrency.Value += currencyLoot;
+            manager.soulsCount.Value += soulsValue;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Fragments")
+        {
+            manager.fragmentsCount.Value += fragmentsValue;
             Destroy(other.gameObject);
         }
     }

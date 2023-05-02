@@ -140,7 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 100
-  lootCurrency: {fileID: 1976317342851034635, guid: bdb43e4e4d4bb284a9049fb2f8917052, type: 3}
+  souls: {fileID: 1976317342851034635, guid: bdb43e4e4d4bb284a9049fb2f8917052, type: 3}
+  fragments: {fileID: 1976317342851034635, guid: e8b10c1ff9373314484059c674aeda4e, type: 3}
   lootHP: {fileID: 9206877563051673848, guid: cb8f11517ded2bc41b8cd60c895c451c, type: 3}
   lootDropPos: {fileID: 1837096935535024387}
 --- !u!114 &1837096935516271769
@@ -168,9 +169,7 @@ MonoBehaviour:
   isRanged: 0
   isMelee: 0
   isWizard: 1
-  canMove: 0
   playerInvisible: 0
-  immoboliseTime: 2
 --- !u!114 &1837096935516271770
 MonoBehaviour:
   m_ObjectHideFlags: 0
