@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoCappacity: 21
   reloadTime: 0.1452
-  fireRate: 0.125
-  bulletSpeed: 40
-  rifleDamage: 25
-  explodingBullets: 1
-  sniperDamage: 120
-  explodingDamage: 45
+  fireRate: 0.2
+  bulletSpeed: 25
+  projectileDamage: 15
+  explodingBullets: 0
+  beamDamage: 90
+  beamCooldown: 5
+  explodingDamage: 11

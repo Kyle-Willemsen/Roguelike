@@ -54,7 +54,7 @@ public class WeaponUpgrades : MonoBehaviour
         if (fragments.Value >= rifleDamageCost)
         {
             fragments.Value -= rifleDamageCost;
-            weaponSO.RifleDamage += weaponSO.RifleDamage * 0.15f;
+            weaponSO.ProjectileDamage += weaponSO.ProjectileDamage * 0.15f;
         }
     }
     public void UpgradeExplodingBulelts()

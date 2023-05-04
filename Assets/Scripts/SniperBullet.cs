@@ -10,19 +10,9 @@ public class SniperBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (weaponSO.ExplodingBullets)
-        {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layermask);
-            foreach (Collider collider in colliders)
-            {
-                collider.GetComponent<EnemyStats>().TakeDamage(weaponSO.ExplodingDamage);
-                Destroy(gameObject);
-            }
-        }
-
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.SniperDamage);
+            collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.BeamDamage);
             Destroy(gameObject);
         }
         

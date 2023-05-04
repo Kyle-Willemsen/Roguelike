@@ -34,11 +34,11 @@ public class WeaponSO : ScriptableObject
     }
 
 
-    [SerializeField] private float rifleDamage;
-    public float RifleDamage
+    [SerializeField] private float projectileDamage;
+    public float ProjectileDamage
     {
-        get { return rifleDamage; }
-        set { rifleDamage = value; }
+        get { return projectileDamage; }
+        set { projectileDamage = value; }
     }
 
     //[SerializeField] private float piercingBullets;
@@ -62,11 +62,18 @@ public class WeaponSO : ScriptableObject
     //    set { immobilisingBullets = value; }
     //}
 
-    [SerializeField] private float sniperDamage;
-    public float SniperDamage
+    [SerializeField] private float beamDamage;
+    public float BeamDamage
     {
-        get { return sniperDamage; }
-        set { sniperDamage = value; }
+        get { return beamDamage; }
+        set { beamDamage = value; }
+    }
+
+    [SerializeField] private float beamCooldown;
+    public float BeamCooldown
+    {
+        get { return beamCooldown; }
+        set { beamCooldown = value; }
     }
 
     [SerializeField] float explodingDamage;

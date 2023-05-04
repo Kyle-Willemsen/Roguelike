@@ -56,7 +56,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.97
+      value: -35.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
       propertyPath: m_LocalPosition.y
@@ -104,7 +104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
       propertyPath: m_Name
-      value: Chest_Blockout Variant
+      value: Chest_Blockout (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3956935463432770993, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
       propertyPath: m_LocalPosition.z

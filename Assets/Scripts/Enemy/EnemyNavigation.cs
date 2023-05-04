@@ -22,10 +22,13 @@ public class EnemyNavigation : MonoBehaviour
     [SerializeField] float sightRange;
     bool playerInSightRange, playerInAttackRange;
     public bool isRanged;
-    public bool isMelee;
+    public bool isGolem;
     public bool isWizard;
 
     public bool playerInvisible;
+    public bool isBasicMelee;
+
+
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
@@ -112,13 +115,17 @@ public class EnemyNavigation : MonoBehaviour
         {
             GetComponent<EnemyRanged>().NormalAttack();
         }
-        if (isMelee)
+        if (isGolem)
         {
-            GetComponent<EnemyMelee>().Attack();
+            GetComponent<GolemAttack>().Attack();
         }
         if (isWizard)
         {
             GetComponent<EnemyRanged>().Wizard();
+        }
+        if (isBasicMelee)
+        {
+            GetComponent<EnemyBasicMelee>().Attack();
         }
     }
 

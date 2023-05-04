@@ -13,6 +13,7 @@ public class GunSystem : MonoBehaviour
     public GameObject gun;
     public Transform gunBarrel;
     public GameObject automaticBullet;
+    public GameObject explodingBullet;
     public GameObject sniperBullet;
     public bool canShoot = true;
 
@@ -22,13 +23,15 @@ public class GunSystem : MonoBehaviour
 
 
     [Header("Sniper Stats")]
-    public float secondaryFireRate;
+    public float beamLifespan;
     public float secondarySpeed;
     public bool canShootSecondary;
     private bool sniperShot;
 
+    public GameObject lazerBeam;
+    public float beamCooldown;
 
-
+    //public List<Transform> gunBarrels = new List<Transform>();
 
     private void Start()
     {
@@ -72,45 +75,71 @@ public class GunSystem : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary && currentAmmo > 0)
             {
                 canShootPrimary = false;
-                canShootSecondary = false;
+                //canShootSecondary = false;
                 currentAmmo--;
 
                 Invoke("ResetPrimary", weaponSO.FireRate);
 
-                var currentBullet = Instantiate(automaticBullet, gunBarrel.position, gunBarrel.rotation);
-                currentBullet.GetComponent<Rigidbody>().velocity = gunBarrel.forward * weaponSO.BulletSpeed;
+                if (weaponSO.ExplodingBullets)
+                {
+                    var explodingBullets = Instantiate(explodingBullet, gunBarrel.position, gunBarrel.rotation);
+                    explodingBullets.GetComponent<Rigidbody>().velocity = gunBarrel.forward * weaponSO.BulletSpeed;
+                }
+                else
+                {
+                    var currentBullet = Instantiate(automaticBullet, gunBarrel.position, gunBarrel.rotation);
+                    currentBullet.GetComponent<Rigidbody>().velocity = gunBarrel.forward * weaponSO.BulletSpeed;
+                }
+
+
             }
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && canShootSecondary)
         {
             canShootSecondary = false;
             playerMovement.canMove = false;
-            anim.SetBool("SniperShot", true);
+            //anim.SetBool("SniperShot", true);
 
-            Invoke("ResetSecondary", secondaryFireRate);
+            lazerBeam.SetActive(true);
+            StartCoroutine(LazerBeam());
+            Invoke("BeamCooldown", beamCooldown);
+
+
+            //Invoke("ResetSecondary", secondaryFireRate);
         }
     }
 
+    private void BeamCooldown()
+    {
+        canShootSecondary = true;
+    }
+    IEnumerator LazerBeam()
+    {
+        yield return new WaitForSeconds(beamLifespan);
+        lazerBeam.SetActive(false);
+        //canShootSecondary = true;
+        playerMovement.canMove = true;
+    }
     public void ShootSniper()
     {
         sniperShot = true;
     }
 
-    public void ResetMovement()
-    {
-        anim.SetBool("SniperShot", false);
-        playerMovement.canMove = true;
-    }
+    //public void ResetMovement()
+    //{
+    //    anim.SetBool("SniperShot", false);
+    //    playerMovement.canMove = true;
+    //}
 
     private void ResetPrimary()
     {
         canShootPrimary = true;
-        canShootSecondary = true;
+        //canShootSecondary = true;
     }
 
-    private void ResetSecondary()
-    {
-        canShootSecondary = true;
-    }
+    //private void ResetSecondary()
+    //{
+    //    canShootSecondary = true;
+    //}
 
 }

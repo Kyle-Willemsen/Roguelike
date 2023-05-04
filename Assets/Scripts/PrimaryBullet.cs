@@ -19,7 +19,7 @@ public class PrimaryBullet : MonoBehaviour
      {
          if (collision.gameObject.tag == "Enemy")
          {
-             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.RifleDamage);
+             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.ProjectileDamage);
              Destroy(gameObject);
          }
          Destroy(gameObject);
