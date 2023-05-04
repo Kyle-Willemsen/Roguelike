@@ -18,18 +18,19 @@ public class EnemyStats : MonoBehaviour
     public Transform lootDropPos;
 
     public bool soulsRoom;
-    [SerializeField] SingleValuesSO roomsEntered;
+    //[SerializeField] SingleValuesSO roomsEntered;
 
     private void Awake()
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        manager.numberOfEnemiesLeft++;
+
     }
     private void Start()
     {
+        manager.numberOfEnemiesLeft++;
         currentHealth = maxHealth;
 
-        if (soulsRoom && roomsEntered.Value == 3)
+        if (soulsRoom)
         {
             soulMinDrop = 2;
             soulMaxDrop = 8;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     [SerializeField] List<GameObject> lootChance = new List<GameObject>();
-    public GameObject uiDisplay;
+    GameObject uiDisplay;
     public float amountOfLootToSpawn;
     public Transform spawnLocation;
     Animator anim;
@@ -15,6 +15,8 @@ public class Chest : MonoBehaviour
 
     private void Start()
     {
+        uiDisplay = GameObject.Find("OpenChest");
+        uiDisplay.SetActive(false);
         canOpen = true; 
         anim = GetComponent<Animator>();
     }

@@ -8,6 +8,9 @@ TagManager:
   - HPSmall
   - Souls
   - Fragments
+  - PlayerUpgrades
+  - BeamUpgrades
+  - ProjectileUpgrades
   layers:
   - Default
   - TransparentFX

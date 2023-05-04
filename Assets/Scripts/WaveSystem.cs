@@ -24,12 +24,12 @@ public class WaveSystem : MonoBehaviour
     }
     private void Update()
     {
-       if (manager.numberOfEnemiesLeft <= 0 && waveCount > 0 && waveCount < 4)
+       if (manager.numberOfEnemiesLeft <= 0 && waveCount > 0 && waveCount <= 2)
        {
            SpawnWave();
        }
 
-        if (waveCount > 3)
+        if (waveCount == 3 && manager.numberOfEnemiesLeft == 0)
         {
             manager.waveInProgress = false;
         }

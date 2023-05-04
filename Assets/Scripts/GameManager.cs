@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI fragmentSHUD;
     [SerializeField] TextMeshProUGUI potionHUD;
     [SerializeField] PlayerStatsSO pStatsSO;
-    private GameObject door;
     public SingleValuesSO soulsCount;
     public SingleValuesSO fragmentsCount;
 
@@ -31,61 +30,30 @@ public class GameManager : MonoBehaviour
     public List<Transform> roomSpawnPoints = new List<Transform>();
     public float amountOfRooms;
     public GameObject shopSelectionRoom;
-    private void Start()
-    {
-        Debug.Log("Start");
-        door = GameObject.Find("DoorTest");
-        door.SetActive(false);
-    }
+    bool doorsActive = false;
+
 
     private void Update()
     {
         potionCounter = pStatsSO.PotionCounter;
-        //if (spawnedEnemies > 0)
-        //{
-        //    randomSpawner = Random.Range(0, Spawners.Count);
-        //    Instantiate(Enemies[randomEnemy], Spawners[randomSpawner].transform.position, Quaternion.identity);
-        //    spawnedEnemies--;
-        //}
 
         soulsHUD.text = "Souls:" + soulsCount.Value;
         fragmentSHUD.text = "Fragments:" + fragmentsCount.Value;
         potionHUD.text = "" + potionCounter;
 
-        if (numberOfEnemiesLeft <= 0 && !waveInProgress)
+        if (numberOfEnemiesLeft <= 0 && !waveInProgress && !doorsActive)
         {
-            door.SetActive(true);
+            doorsActive = true;
+            InstantiateRooms();
+
         }
-       // if (roomsEntered.Value <= 1)
-       // {
-       //     randomScene = Random.Range(0, 3);
-       // }
-       //
-       // if (roomsEntered.Value > 3 && roomsEntered.Value <= 7)
-       // {
-       //     randomScene = Random.Range(4, 7);
-       // }
-       // if (roomsEntered.Value > 7 && roomsEntered.Value <= 11)
-       // {
-       //     randomScene = Random.Range(8, 12);
-       // }
+    }
 
-       ///Wave 1
-       //f (roomsEntered.Value == 0 || roomsEntered.Value == 4 && roomsEntered.Value < 6)
-       //
-       //   randomScene = Random.Range(0, 3);
-       //
-       //f (roomsEntered.Value == 9 || roomsEntered.Value == 13 && roomsEntered.Value < 15)
-       //
-       //   randomScene = Random.Range(4, 7);
-       //
-       //f (roomsEntered.Value == 18 || roomsEntered.Value == 22 && roomsEntered.Value < 24)
-       //
-       //   randomScene = Random.Range(8, 11);
-       //
-
-        if (roomsEntered.Value < 2)
+    private void InstantiateRooms()
+    {
+        if (roomsEntered.Value <= 2)
         {
+
             randomScene = Random.Range(0, 4);
             Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
             Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
@@ -96,6 +64,5 @@ public class GameManager : MonoBehaviour
             Instantiate(shopSelectionRoom, roomSpawnPoints[1].position, Quaternion.identity);
         }
     }
-
 
 }

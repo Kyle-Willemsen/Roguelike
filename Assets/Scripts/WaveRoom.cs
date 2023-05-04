@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ShopSelectionRoom : MonoBehaviour
+public class WaveRoom : MonoBehaviour
 {
-    [SerializeField] SingleValuesSO roomsEntered;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            roomsEntered.Value++;
-            SceneManager.LoadScene("ShopSelection");
+            SceneManager.LoadScene("Wave Room");
         }
     }
 }

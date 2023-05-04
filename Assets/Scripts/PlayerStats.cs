@@ -44,7 +44,6 @@ public class PlayerStats : MonoBehaviour
 
         if (pStatsSo.PotionCounter > 0 && Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Use");
             IncreaseHealth(pStatsSo.PotionValue);
             pStatsSo.PotionCounter--;
         }
@@ -77,7 +76,6 @@ public class PlayerStats : MonoBehaviour
     {
         if (other.gameObject.tag == "HPSmall")
         {
-            Debug.Log("HP");
             pStatsSo.PotionCounter++;
             Destroy(other.gameObject);
         }

@@ -30,15 +30,18 @@ EditorBuildSettings:
     path: Assets/Scenes/2.4.unity
     guid: 31ab13187eb2e2b4c92261c9545e2c6b
   - enabled: 1
-    path: Assets/Scenes/3.1.unity
-    guid: 772ae844a5d2e00438a847e902f2b0a8
+    path: Assets/Scenes/ShopSelection.unity
+    guid: 88d8b929c682f214fb42fef9fc974a0a
   - enabled: 1
-    path: Assets/Scenes/3.2.unity
-    guid: 2f5a97a7d3ea42f438406cda098de5ec
+    path: Assets/Scenes/Beam Upgrades.unity
+    guid: 1fa397ed8b22daa4492cc3aaf222ec96
   - enabled: 1
-    path: Assets/Scenes/3.3.unity
-    guid: 7e2a95db3d900814fa980fc0ff6d9e64
+    path: Assets/Scenes/Player Upgrades.unity
+    guid: ee08ac50e2fa636459016a0b05bfca1f
   - enabled: 1
-    path: Assets/Scenes/3.4.unity
-    guid: 303cc438d064feb41b768952f4444d62
+    path: Assets/Scenes/Projectile Upgrades.unity
+    guid: 859160fea0fa3a0469aceee4d261999e
+  - enabled: 1
+    path: Assets/Scenes/Wave Room.unity
+    guid: b35a7b304494f084bb32bac87e06959e
   m_configObjects: {}

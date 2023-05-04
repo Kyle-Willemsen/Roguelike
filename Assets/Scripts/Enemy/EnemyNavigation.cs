@@ -27,6 +27,7 @@ public class EnemyNavigation : MonoBehaviour
 
     public bool playerInvisible;
     public bool isBasicMelee;
+    public bool isLunge;
 
 
     private void Awake()
@@ -126,6 +127,10 @@ public class EnemyNavigation : MonoBehaviour
         if (isBasicMelee)
         {
             GetComponent<EnemyBasicMelee>().Attack();
+        }
+        if (isLunge)
+        {
+            GetComponent<EnemyLunge>().Attack();
         }
     }
 
