@@ -177,7 +177,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.75
-  m_Speed: 13
+  m_Speed: 15
   m_Acceleration: 13
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -207,6 +207,7 @@ MonoBehaviour:
   fragments: {fileID: 1976317342851034635, guid: e8b10c1ff9373314484059c674aeda4e, type: 3}
   lootHP: {fileID: 9206877563051673848, guid: cb8f11517ded2bc41b8cd60c895c451c, type: 3}
   lootDropPos: {fileID: 8294510599981014333}
+  soulsRoom: 0
 --- !u!114 &8294510600672823109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +235,7 @@ MonoBehaviour:
   isWizard: 0
   playerInvisible: 0
   isBasicMelee: 1
+  isLunge: 0
 --- !u!114 &8294510600672823115
 MonoBehaviour:
   m_ObjectHideFlags: 0

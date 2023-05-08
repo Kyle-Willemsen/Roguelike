@@ -145,6 +145,7 @@ MonoBehaviour:
   fragments: {fileID: 1976317342851034635, guid: e8b10c1ff9373314484059c674aeda4e, type: 3}
   lootHP: {fileID: 9206877563051673848, guid: cb8f11517ded2bc41b8cd60c895c451c, type: 3}
   lootDropPos: {fileID: 1837096935535024387}
+  soulsRoom: 0
 --- !u!114 &1837096935516271769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,12 +166,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   walkPointRange: 10
-  attackRange: 15
-  sightRange: 35
+  attackRange: 20
+  sightRange: 38
   isRanged: 0
-  isMelee: 0
+  isGolem: 0
   isWizard: 1
   playerInvisible: 0
+  isBasicMelee: 0
+  isLunge: 0
 --- !u!114 &1837096935516271770
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -134,13 +134,13 @@ public class EnemyNavigation : MonoBehaviour
         }
     }
 
-    private void OnDrawGizomsSelected()
-    {
-        Debug.Log("DrawGizmo");
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Debug.Log("DrawGizmo");
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, attackRange);
+    //
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireSphere(transform.position, sightRange);
+    //}
 }

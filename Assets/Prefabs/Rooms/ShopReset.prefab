@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopReset
       objectReference: {fileID: 0}
+    - target: {fileID: 3566390031902043909, guid: f813a0a2b805f874d80e6e16d54fad29, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c1eb7ab7cb7e5644a096b38e24ed140, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f813a0a2b805f874d80e6e16d54fad29, type: 3}
 --- !u!4 &7702133424751422090 stripped

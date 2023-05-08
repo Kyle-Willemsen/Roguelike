@@ -17,6 +17,7 @@ public class RandomTest : MonoBehaviour
 
         for (int i = 0; i < spawnPoints.Count; i++)
         {
+
             Instantiate(scenery[randomProp], spawnPoints[randomPoint].position, Quaternion.identity);
         }
     }
