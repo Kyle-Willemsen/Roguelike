@@ -9,6 +9,7 @@ public class PrimaryBullet : MonoBehaviour
     [SerializeField] WeaponSO weaponSO;
     
     
+    
      private void Update()
      {
          Destroy(gameObject, 0.7f);
@@ -19,8 +20,9 @@ public class PrimaryBullet : MonoBehaviour
      {
          if (collision.gameObject.tag == "Enemy")
          {
-             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.ProjectileDamage);
-             Destroy(gameObject);
+            collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.ProjectileDamage);
+            CameraShake.Instance.ShakeCamera(1, 0.2f);
+            Destroy(gameObject, 1);
          }
          Destroy(gameObject);
      }

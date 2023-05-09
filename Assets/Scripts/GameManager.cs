@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
     {
         potionCounter = pStatsSO.PotionCounter;
 
-        soulsHUD.text = "Souls:" + soulsCount.Value;
-        fragmentSHUD.text = "Fragments:" + fragmentsCount.Value;
+        soulsHUD.text = "Souls: " + soulsCount.Value;
+        fragmentSHUD.text = "Fragments: " + fragmentsCount.Value;
         potionHUD.text = "" + potionCounter;
 
         if (numberOfEnemiesLeft <= 0 && !waveInProgress && !doorsActive)

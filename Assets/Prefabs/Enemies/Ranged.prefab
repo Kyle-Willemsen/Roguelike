@@ -175,6 +175,7 @@ MonoBehaviour:
   fragments: {fileID: 1976317342851034635, guid: e8b10c1ff9373314484059c674aeda4e, type: 3}
   lootHP: {fileID: 9206877563051673848, guid: cb8f11517ded2bc41b8cd60c895c451c, type: 3}
   lootDropPos: {fileID: 5831906122109721765}
+  soulsRoom: 0
 --- !u!114 &5831906122864882732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,9 +217,11 @@ MonoBehaviour:
   attackRange: 15
   sightRange: 35
   isRanged: 1
-  isMelee: 0
+  isGolem: 0
   isWizard: 0
   playerInvisible: 0
+  isBasicMelee: 0
+  isLunge: 0
 --- !u!54 &7254253402621992393
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -259,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5831906123347078973}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.653}
+  m_LocalPosition: {x: 0, y: 0, z: 0.782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
