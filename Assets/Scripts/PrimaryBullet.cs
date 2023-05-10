@@ -12,7 +12,7 @@ public class PrimaryBullet : MonoBehaviour
     
      private void Update()
      {
-         Destroy(gameObject, 0.7f);
+         Destroy(gameObject, weaponSO.ProjectileLifetime);
      }
     
     
@@ -21,7 +21,7 @@ public class PrimaryBullet : MonoBehaviour
          if (collision.gameObject.tag == "Enemy")
          {
             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.ProjectileDamage);
-            CameraShake.Instance.ShakeCamera(1, 0.2f);
+            CameraShake.Instance.ShakeCamera(.5F, 0.2f);
             Destroy(gameObject, 1);
          }
          Destroy(gameObject);

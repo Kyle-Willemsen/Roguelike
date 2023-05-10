@@ -21,3 +21,4 @@ MonoBehaviour:
   beamDamage: 90
   beamCooldown: 5
   explodingDamage: 11
+  projectileLifetime: 0.7

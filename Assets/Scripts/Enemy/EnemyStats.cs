@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     GameManager manager;
+    //public HealthBar healthbar;
     public float currentHealth;
     public float maxHealth;
+    public GameObject floatingText;
 
     public GameObject souls;
     public GameObject fragments;
@@ -23,10 +25,12 @@ public class EnemyStats : MonoBehaviour
     private void Awake()
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
 
     }
     private void Start()
     {
+       // healthbar.SetMaxHealth(maxHealth);
         manager.numberOfEnemiesLeft++;
         currentHealth = maxHealth;
 
@@ -50,10 +54,17 @@ public class EnemyStats : MonoBehaviour
         {
             Dead();
         }
+
+
     }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+       // healthbar.SetHealth(currentHealth);
+        
+        var ft = Instantiate(floatingText, transform.position, Quaternion.identity, transform);
+        ft.GetComponent<TextMesh>().text = damage.ToString();
     }
 
     private void Dead()
@@ -79,4 +90,9 @@ public class EnemyStats : MonoBehaviour
         manager.numberOfEnemiesLeft--;
         Destroy(gameObject);
     }
+   // private void LateUpdate()
+    //{
+        //healthbar.transform.LookAt(Camera.main.transform);
+        //healthbar.transform.Rotate(0, 180, 0);
+    //}
 }

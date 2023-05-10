@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider healthBar;
+    private float currentVelocity = 0f;
+
 
     public void SetMaxHealth(float health)
     {
@@ -15,6 +17,7 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(float health)
     {
+        //float currentHealth =  Mathf.SmoothDamp(healthBar.value, health, ref currentVelocity, 100 * Time.deltaTime);
         healthBar.value = health;
     }
 }

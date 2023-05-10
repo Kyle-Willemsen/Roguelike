@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class EnemyNavigation : MonoBehaviour
 {
     //References
-    private NavMeshAgent navAgent;
+    [HideInInspector] public NavMeshAgent navAgent;
     //private Animator anim;
-     public Transform player;
+    public Transform player;
     PlayerMovement pMovement;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
@@ -132,6 +132,7 @@ public class EnemyNavigation : MonoBehaviour
         {
             GetComponent<EnemyLunge>().Attack();
         }
+        
     }
 
     //private void OnDrawGizmos()

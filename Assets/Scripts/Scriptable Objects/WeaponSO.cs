@@ -83,4 +83,11 @@ public class WeaponSO : ScriptableObject
         set { explodingDamage = value; }
     }
 
+    [SerializeField] float projectileLifetime;
+    public float ProjectileLifetime
+    {
+        get { return projectileLifetime; }
+        set { projectileLifetime = value; }
+    }
+
 }

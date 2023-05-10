@@ -10,26 +10,32 @@ public class GunSystem : MonoBehaviour
     PlayerMovement playerMovement;
     public WeaponSO weaponSO;
     Animator anim;
-    public GameObject gun;
-    public Transform gunBarrel;
-    public GameObject automaticBullet;
-    public GameObject explodingBullet;
-    public GameObject sniperBullet;
+    //public GameObject gun;
+    public Transform shootPos;
+    public GameObject normalProjectile;
+    public GameObject explodingProjectile;
+    //public GameObject sniperBullet;
     public bool canShoot = true;
 
     [Header("Primary Stats")]
     public bool canShootPrimary;
-    public float currentAmmo;
+    //public float currentAmmo;
 
 
-    [Header("Sniper Stats")]
-    public float beamLifespan;
-    public float secondarySpeed;
-    public bool canShootSecondary;
-    private bool sniperShot;
-
+    [Header("Beam Stats")]
     public GameObject lazerBeam;
+    public float beamLifespan;
+    //public float secondarySpeed;
+    public bool canShootBeam;
     public float beamCooldown;
+    //private bool beamActive;
+
+    [Header("Orb Stats")]
+    public GameObject orb;
+    public Transform orbSpawnPoint;
+    public float orbSpeed;
+    public float orbCooldown;
+    public bool canShootOrb;
 
     //public List<Transform> gunBarrels = new List<Transform>();
 
@@ -39,64 +45,63 @@ public class GunSystem : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         canShootPrimary = true;
-        canShootSecondary = true;
+        canShootBeam = true;
+        canShootOrb = true;
 
-        currentAmmo = weaponSO.AmmoCapacity;
+        //currentAmmo = weaponSO.AmmoCapacity;
     }
     private void Update()
     {
-        gun.transform.LookAt(playerMovement.facingDir);
+        //gun.transform.LookAt(playerMovement.facingDir);
         Shoot();
 
-        if (currentAmmo <= 0 || Input.GetKeyDown(KeyCode.R))
-        {
-            canShoot = false;
-            Invoke("Reload", weaponSO.ReloadTime);
-        }
+        //if (currentAmmo <= 0 || Input.GetKeyDown(KeyCode.R))
+        //{
+        //    canShoot = false;
+        //    Invoke("Reload", weaponSO.ReloadTime);
+        //}
 
-        if (sniperShot)
-        {
-            var currentBullet = Instantiate(sniperBullet, gunBarrel.position, gunBarrel.rotation);
-            currentBullet.GetComponent<Rigidbody>().velocity = gunBarrel.forward * secondarySpeed;
-            sniperShot = false;
-        }
+       // if (beamActive)
+       // {
+       //     var currentBullet = Instantiate(sniperBullet, shootPos.position, shootPos.rotation);
+       //     currentBullet.GetComponent<Rigidbody>().velocity = shootPos.forward * secondarySpeed;
+       //     beamActive = false;
+       // }
 
     }
 
-    private void Reload()
-    {
-        currentAmmo = weaponSO.AmmoCapacity;
-        canShoot = true;
-    }
+   // private void Reload()
+   // {
+   //     currentAmmo = weaponSO.AmmoCapacity;
+   //     canShoot = true;
+   // }
     private void Shoot()
     {
         if (canShoot)
         {
-            if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary && currentAmmo > 0)
+            if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary)// && currentAmmo > 0)
             {
                 canShootPrimary = false;
                 //canShootSecondary = false;
-                currentAmmo--;
+                //currentAmmo--;
 
                 Invoke("ResetPrimary", weaponSO.FireRate);
 
                 if (weaponSO.ExplodingBullets)
                 {
-                    var explodingBullets = Instantiate(explodingBullet, gunBarrel.position, gunBarrel.rotation);
-                    explodingBullets.GetComponent<Rigidbody>().velocity = gunBarrel.forward * weaponSO.BulletSpeed;
+                    var explodingBullets = Instantiate(explodingProjectile, shootPos.position, shootPos.rotation);
+                    explodingBullets.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.BulletSpeed;
                 }
                 else
                 {
-                    var currentBullet = Instantiate(automaticBullet, gunBarrel.position, gunBarrel.rotation);
-                    currentBullet.GetComponent<Rigidbody>().velocity = gunBarrel.forward * weaponSO.BulletSpeed;
+                    var currentBullet = Instantiate(normalProjectile, shootPos.position, shootPos.rotation);
+                    currentBullet.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.BulletSpeed;
                 }
-
-
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1) && canShootSecondary)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && canShootBeam)
         {
-            canShootSecondary = false;
+            canShootBeam = false;
             playerMovement.canMove = false;
             //anim.SetBool("SniperShot", true);
 
@@ -107,11 +112,24 @@ public class GunSystem : MonoBehaviour
 
             //Invoke("ResetSecondary", secondaryFireRate);
         }
+
+        if (Input.GetKeyDown(KeyCode.R) && canShootOrb)
+        {
+            var currentOrb = Instantiate(orb, orbSpawnPoint.position, Quaternion.identity);
+            currentOrb.GetComponent<Rigidbody>().velocity = transform.forward * orbSpeed;
+            canShootOrb = false;
+            Invoke("OrbCooldown", orbCooldown);
+        }
+    }
+
+    private void OrbCooldown()
+    {
+        canShootOrb = true;
     }
 
     private void BeamCooldown()
     {
-        canShootSecondary = true;
+        canShootBeam = true;
     }
     IEnumerator LazerBeam()
     {
@@ -120,10 +138,10 @@ public class GunSystem : MonoBehaviour
         //canShootSecondary = true;
         playerMovement.canMove = true;
     }
-    public void ShootSniper()
-    {
-        sniperShot = true;
-    }
+   // public void ShootSniper()
+   // {
+   //     beamActive = true;
+   // }
 
     //public void ResetMovement()
     //{

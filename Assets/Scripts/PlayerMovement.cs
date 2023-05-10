@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             pointToLook = mousePos.GetPoint(rayLength);
 
             transform.LookAt(facingDir);
-            gunSystem.gunBarrel.transform.LookAt(facingDir);
+            gunSystem.shootPos.transform.LookAt(facingDir);
         }
     }
 

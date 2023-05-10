@@ -15,9 +15,9 @@ MonoBehaviour:
   playerHealth: 100
   maxHealth: 100
   potionValue: 35
-  potionCounter: 7
+  potionCounter: 8
   dashCooldwon: 1.2
   baseMoveSpeed: 10
-  dashBomb: 0
+  dashBomb: 1
   invisibleAbility: 0
   teleportDash: 0

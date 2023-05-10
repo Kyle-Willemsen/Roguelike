@@ -112,6 +112,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 85
+--- !u!1 &431317092683115836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2846602867941740192}
+  m_Layer: 6
+  m_Name: OrbSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2846602867941740192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431317092683115836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5751856612675824368}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1307609587626527451
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +204,6 @@ Transform:
   m_Children:
   - {fileID: 5751856611967854179}
   - {fileID: 5751856611789578827}
-  - {fileID: 5751856612744328336}
   - {fileID: 5751856612496682512}
   m_Father: {fileID: 5675306859429218856}
   m_RootOrder: 5
@@ -435,7 +465,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5751856611278638919}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5751856612496682515
 MeshFilter:
@@ -538,6 +568,8 @@ Transform:
   - {fileID: 8398040978406847482}
   - {fileID: 1990115190}
   - {fileID: 543450653215752291}
+  - {fileID: 5751856612744328336}
+  - {fileID: 2846602867941740192}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -597,19 +629,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 791d8a285665e1049ab27ccec9f1592c, type: 2}
-  gun: {fileID: 5751856611278638918}
-  gunBarrel: {fileID: 5751856612744328336}
-  automaticBullet: {fileID: 2119652611795401747, guid: 6e22cc3f5e7ab2f4c909aa9235d9f018, type: 3}
-  explodingBullet: {fileID: 201683083923324199, guid: 3673d7fce2677e147b0deb469fd137a7, type: 3}
-  sniperBullet: {fileID: 201683083923324199, guid: 3673d7fce2677e147b0deb469fd137a7, type: 3}
+  shootPos: {fileID: 5751856612744328336}
+  normalProjectile: {fileID: 2119652611795401747, guid: 6e22cc3f5e7ab2f4c909aa9235d9f018, type: 3}
+  explodingProjectile: {fileID: 201683083923324199, guid: 3673d7fce2677e147b0deb469fd137a7, type: 3}
   canShoot: 1
   canShootPrimary: 1
-  currentAmmo: 0
-  beamLifespan: 0.5
-  secondarySpeed: 150
-  canShootSecondary: 1
   lazerBeam: {fileID: 1990115185}
+  beamLifespan: 0.5
+  canShootBeam: 0
   beamCooldown: 5
+  orb: {fileID: 5113286311143559293, guid: 4739e508d7c5b724dac3e7e3c325f002, type: 3}
+  orbSpawnPoint: {fileID: 2846602867941740192}
+  orbSpeed: 6
+  orbCooldown: 5
+  canShootOrb: 0
 --- !u!114 &5751856612675824370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,13 +702,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5751856612744328367}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.595}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.37299988, y: 0.278, z: 1.4340019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5751856611278638919}
-  m_RootOrder: 2
+  m_Father: {fileID: 5751856612675824368}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &526149512
 PrefabInstance:
@@ -740,6 +773,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4483357855876433390, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2db93248326f11c4d91fa9b5b50c5bb0, type: 2}
+    - target: {fileID: 5388580101715866612, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1470895548700591226, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
     m_RemovedComponents:
     - {fileID: -2107171381243340700, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
@@ -4009,9 +4050,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7996737483780565551, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
-  - {fileID: 1470895548700591226, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
-  - {fileID: 1567818261435876064, guid: 0229bbd8d62ee24458f9a41a53e518fe, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: 2db93248326f11c4d91fa9b5b50c5bb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 225189003743443590}
   - component: {fileID: 3159182250763226004}
   m_Layer: 0
-  m_Name: ExplodingBullet
+  m_Name: ExplodingProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 128
+  vfxExplosion: {fileID: 3677900355964550911, guid: 4c1de113f96879247b464f1b0e24cfeb, type: 3}
 --- !u!1001 &6242871600603679407
 PrefabInstance:
   m_ObjectHideFlags: 0

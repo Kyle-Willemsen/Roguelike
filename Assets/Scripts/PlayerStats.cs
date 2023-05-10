@@ -58,8 +58,6 @@ public class PlayerStats : MonoBehaviour
 
     public void UpgradeMaxHealth(float value)
     {
-
-
         pStatsSo.PlayerMaxHealth += value;
         healthbar.SetMaxHealth(pStatsSo.PlayerMaxHealth);
         healthbar.SetHealth(pStatsSo.PlayerHealth);

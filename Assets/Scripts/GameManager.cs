@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public float amountOfRooms;
     public GameObject shopSelectionRoom;
     bool doorsActive = false;
+    [SerializeField] TextMeshProUGUI enemiesLeftHUD;
+    public GameObject openChestHUD;
 
 
     private void Update()
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         soulsHUD.text = "Souls: " + soulsCount.Value;
         fragmentSHUD.text = "Fragments: " + fragmentsCount.Value;
         potionHUD.text = "" + potionCounter;
+        enemiesLeftHUD.text = "Enemies Left: " + numberOfEnemiesLeft;
 
         if (numberOfEnemiesLeft <= 0 && !waveInProgress && !doorsActive)
         {

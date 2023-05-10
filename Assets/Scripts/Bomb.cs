@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     public float blastRadius;
     public LayerMask layerMask;
     public float damage;
+    public GameObject vfxBomb;
 
     private void Start()
     {
@@ -16,6 +17,8 @@ public class Bomb : MonoBehaviour
     private IEnumerator BombCounter()
     {
         yield return new WaitForSeconds(bombDelay);
+        Instantiate(vfxBomb, transform.position, Quaternion.identity);
+        CameraShake.Instance.ShakeCamera(1.5f, 0.5f);
         Explode();
     }
 
@@ -32,9 +35,9 @@ public class Bomb : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, blastRadius);
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawSphere(transform.position, blastRadius);
+    // }
 }
