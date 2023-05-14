@@ -610,11 +610,19 @@ MonoBehaviour:
   dashTime: 0.15
   canDash: 1
   bomb: {fileID: 8496624544761263138, guid: 1c3f882b6b805154d8e5f88b30c95237, type: 3}
+  dashImage: {fileID: 0}
   isInvisible: 0
   invisibilityCounter: 1
   mesh: {fileID: 5010656085857374354}
   teleportTimer: 1.7
   canNowTeleport: 0
+  layermask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundDistance: 0.4
+  isGrounded: 0
+  groundCheck: {fileID: 0}
+  gravity: 0
   facingDir: {x: 0, y: 0, z: 0}
 --- !u!114 &5751856612675824369
 MonoBehaviour:
@@ -643,6 +651,10 @@ MonoBehaviour:
   orbSpeed: 6
   orbCooldown: 5
   canShootOrb: 0
+  beamImage: {fileID: 0}
+  beamActive: 0
+  orbImage: {fileID: 0}
+  orbActive: 0
 --- !u!114 &5751856612675824370
 MonoBehaviour:
   m_ObjectHideFlags: 0

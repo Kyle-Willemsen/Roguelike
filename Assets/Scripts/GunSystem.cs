@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
+using UnityEngine.UI;
 
 public class GunSystem : MonoBehaviour
 {
@@ -37,6 +38,14 @@ public class GunSystem : MonoBehaviour
     public float orbCooldown;
     public bool canShootOrb;
 
+    [Header("Beam Cooldown")]
+    private Image beamImage;
+    public bool beamActive = false;
+
+    [Header("Orb Cooldown")]
+    private Image orbImage;
+    public bool orbActive = false;
+
     //public List<Transform> gunBarrels = new List<Transform>();
 
     private void Start()
@@ -47,43 +56,48 @@ public class GunSystem : MonoBehaviour
         canShootPrimary = true;
         canShootBeam = true;
         canShootOrb = true;
+        orbImage = GameObject.Find("orbCD").GetComponent<Image>();
+        beamImage = GameObject.Find("beamCD").GetComponent<Image>();
+        orbImage.fillAmount = 0;
+        beamImage.fillAmount = 0;
+
 
         //currentAmmo = weaponSO.AmmoCapacity;
     }
     private void Update()
     {
-        //gun.transform.LookAt(playerMovement.facingDir);
         Shoot();
 
-        //if (currentAmmo <= 0 || Input.GetKeyDown(KeyCode.R))
-        //{
-        //    canShoot = false;
-        //    Invoke("Reload", weaponSO.ReloadTime);
-        //}
+        if (!canShootOrb)
+        {
+            orbImage.fillAmount -= 1 / orbCooldown * Time.deltaTime;
 
-       // if (beamActive)
-       // {
-       //     var currentBullet = Instantiate(sniperBullet, shootPos.position, shootPos.rotation);
-       //     currentBullet.GetComponent<Rigidbody>().velocity = shootPos.forward * secondarySpeed;
-       //     beamActive = false;
-       // }
+            if (orbImage.fillAmount <= 0)
+            {
+                orbImage.fillAmount = 0;
+                canShootOrb = true;
+            }
+        }
+        if (!canShootBeam)
+        {
+            beamImage.fillAmount -= 1 / beamCooldown * Time.deltaTime;
 
+            if (beamImage.fillAmount <= 0)
+            {
+                beamImage.fillAmount = 0;
+                canShootBeam = true;
+            }
+        }
     }
 
-   // private void Reload()
-   // {
-   //     currentAmmo = weaponSO.AmmoCapacity;
-   //     canShoot = true;
-   // }
     private void Shoot()
     {
         if (canShoot)
         {
-            if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary)// && currentAmmo > 0)
+            if (Input.GetKey(KeyCode.Mouse0) && canShootPrimary)
             {
                 canShootPrimary = false;
-                //canShootSecondary = false;
-                //currentAmmo--;
+
 
                 Invoke("ResetPrimary", weaponSO.FireRate);
 
@@ -103,61 +117,40 @@ public class GunSystem : MonoBehaviour
         {
             canShootBeam = false;
             playerMovement.canMove = false;
-            //anim.SetBool("SniperShot", true);
-
+    
+            beamImage.fillAmount = 1;
             lazerBeam.SetActive(true);
             StartCoroutine(LazerBeam());
             Invoke("BeamCooldown", beamCooldown);
 
-
-            //Invoke("ResetSecondary", secondaryFireRate);
+            beamActive = true;
+            CameraShake.Instance.ShakeCamera(1.5f, 0.35f);
         }
 
         if (Input.GetKeyDown(KeyCode.R) && canShootOrb)
         {
             var currentOrb = Instantiate(orb, orbSpawnPoint.position, Quaternion.identity);
             currentOrb.GetComponent<Rigidbody>().velocity = transform.forward * orbSpeed;
+
+            orbActive = true;
+            orbImage.fillAmount = 1;
+
             canShootOrb = false;
             Invoke("OrbCooldown", orbCooldown);
         }
     }
 
-    private void OrbCooldown()
-    {
-        canShootOrb = true;
-    }
-
-    private void BeamCooldown()
-    {
-        canShootBeam = true;
-    }
     IEnumerator LazerBeam()
     {
         yield return new WaitForSeconds(beamLifespan);
         lazerBeam.SetActive(false);
-        //canShootSecondary = true;
         playerMovement.canMove = true;
     }
-   // public void ShootSniper()
-   // {
-   //     beamActive = true;
-   // }
 
-    //public void ResetMovement()
-    //{
-    //    anim.SetBool("SniperShot", false);
-    //    playerMovement.canMove = true;
-    //}
 
     private void ResetPrimary()
     {
         canShootPrimary = true;
-        //canShootSecondary = true;
     }
-
-    //private void ResetSecondary()
-    //{
-    //    canShootSecondary = true;
-    //}
 
 }

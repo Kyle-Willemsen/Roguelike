@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,13 +35,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI enemiesLeftHUD;
     public GameObject openChestHUD;
 
+    public GameObject pauseScreen;
+    public GameObject deathScreen;
+    PlayerMovement pMovement;
+
+    private void Start()
+    {
+        pMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+    }
+
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
+        }
+
         potionCounter = pStatsSO.PotionCounter;
 
-        soulsHUD.text = "Souls: " + soulsCount.Value;
-        fragmentSHUD.text = "Fragments: " + fragmentsCount.Value;
+        soulsHUD.text = "" + soulsCount.Value;
+        fragmentSHUD.text = "" + fragmentsCount.Value;
         potionHUD.text = "" + potionCounter;
         enemiesLeftHUD.text = "Enemies Left: " + numberOfEnemiesLeft;
 
@@ -66,6 +81,42 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(shopSelectionRoom, roomSpawnPoints[1].position, Quaternion.identity);
         }
+    }
+
+    private void Pause()
+    {
+        pauseScreen.SetActive(true);
+        pMovement.canMove = false;
+
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1;
+        pMovement.canMove = true;
+    }
+
+    public void Restart()
+    {
+
+    }
+
+    public void Options()
+    {
+
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void DeathScreen()
+    {
+        deathScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
 }

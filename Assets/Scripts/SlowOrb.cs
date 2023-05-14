@@ -29,7 +29,7 @@ public class SlowOrb : MonoBehaviour
             if (c.GetComponent<EnemyStats>() && canDamage)
             {
                 canDamage = false;
-                //c.GetComponent<EnemyNavigation>().navAgent.speed = 5f;
+                CameraShake.Instance.ShakeCamera(0.5f, 0.2f);
                 Invoke("ResetTick", resetTimer);
                 c.GetComponent<EnemyStats>().TakeDamage(damage);
             }

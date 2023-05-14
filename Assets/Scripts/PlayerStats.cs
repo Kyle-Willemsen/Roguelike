@@ -29,7 +29,9 @@ public class PlayerStats : MonoBehaviour
     {
         if (pStatsSo.PlayerHealth <= 0)
         {
-            Destroy(gameObject);
+            pStatsSo.PlayerHealth = 0f;
+            manager.DeathScreen();
+            //Destroy(gameObject);
         }
         
         if (pStatsSo.PlayerHealth > pStatsSo.PlayerMaxHealth)

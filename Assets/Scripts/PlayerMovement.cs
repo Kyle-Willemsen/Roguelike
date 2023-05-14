@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashTime;
     public bool canDash = true;
     public GameObject bomb;
+    public Image dashImage;
 
 
     [Header("Invisibility")]
@@ -35,13 +37,13 @@ public class PlayerMovement : MonoBehaviour
     public bool canNowTeleport;
 
 
-    //[Header("Gravity")]
-    //public LayerMask layermask;
-    //public float groundDistance = 0.4f;
-    //public bool isGrounded;
-    //public Transform groundCheck;
-    //private Vector3 velocity;
-    //public float gravity;
+    [Header("Gravity")]
+    public LayerMask layermask;
+    public float groundDistance = 0.4f;
+    public bool isGrounded;
+    public Transform groundCheck;
+    private Vector3 velocity;
+    public float gravity;
 
     //Random
     [HideInInspector] public Vector3 facingDir;
@@ -54,7 +56,8 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         gunSystem = GetComponent<GunSystem>();
         cam = Camera.main;
-
+        dashImage = GameObject.Find("dashCD").GetComponent<Image>();
+        dashImage.fillAmount = 0;
         currentSpeed = pStatsSO.BaseMoveSpeed;
         teleportPos = GameObject.Find("TeleportPos");
         canMove = true;
@@ -66,9 +69,17 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         MouseLook();
         // Gravity();
+        if (!canDash)
+        {
+            dashImage.fillAmount -= 1 / pStatsSO.DashCooldwon * Time.deltaTime;
+            if (dashImage.fillAmount <= 0)
+            {
+                dashImage.fillAmount = 0;
+                canDash = true;
+            }
+        }
 
-
-        if (Input.GetKey(KeyCode.Space) && canDash)
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine("DashCoroutine");
             if (pStatsSO.DashBomb)
@@ -129,18 +140,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-   // private void Gravity()
-   // {
-   //     isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, layermask);
-   //
-   //     if (isGrounded && velocity.y < 0)
-   //     {
-   //         velocity.y = -2f;
-   //     }
-   //
-   //     velocity.y += gravity * Time.deltaTime;
-   //     controller.Move(velocity * Time.deltaTime);
-   // }
+    private void Gravity()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, layermask);
+   
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+   
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+    }
     private IEnumerator DashCoroutine()
     {
         float startTime = Time.time;
@@ -148,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
         while (Time.time < startTime + dashTime)
         {
             canDash = false;
+            dashImage.fillAmount = 1;
             controller.Move(move * dashSpeed * Time.deltaTime);
             yield return null;
         }
