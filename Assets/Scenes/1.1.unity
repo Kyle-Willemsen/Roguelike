@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.11106082, g: 0.27336186, b: 0.33559638, a: 1}
+  m_IndirectSpecularColor: {r: 0.15370433, g: 0.46219462, b: 0.7023737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3572,6 +3572,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282735248}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &293755925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 05101a27a6b27414081d6af0d06f6cc6, type: 3}
+  m_PrefabInstance: {fileID: 1533627963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &295679243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05101a27a6b27414081d6af0d06f6cc6, type: 3}
@@ -5295,6 +5300,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05101a27a6b27414081d6af0d06f6cc6, type: 3}
   m_PrefabInstance: {fileID: 1533627963}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &388900714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293755925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 544.0924, y: 598.0862, z: 759.5557}
+  m_Center: {x: -51.022022, y: 237.35838, z: 4640.585}
 --- !u!1 &398665703
 GameObject:
   m_ObjectHideFlags: 0
@@ -25754,6 +25772,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1118121656, guid: dc7e7e8c4090fbe459068297d758b8cb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2db93248326f11c4d91fa9b5b50c5bb0, type: 2}
+    - target: {fileID: 1118121656, guid: dc7e7e8c4090fbe459068297d758b8cb, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3081a87bacb8df04daa8808c170291b2, type: 2}
+    - target: {fileID: 1990115188, guid: dc7e7e8c4090fbe459068297d758b8cb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5751856612675824368, guid: dc7e7e8c4090fbe459068297d758b8cb, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -25809,6 +25839,10 @@ PrefabInstance:
     - target: {fileID: 5751856612675824397, guid: dc7e7e8c4090fbe459068297d758b8cb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751856612675824398, guid: dc7e7e8c4090fbe459068297d758b8cb, type: 3}
+      propertyPath: gravity
+      value: -9.81
       objectReference: {fileID: 0}
     - target: {fileID: 5751856612675824398, guid: dc7e7e8c4090fbe459068297d758b8cb, type: 3}
       propertyPath: dashImage

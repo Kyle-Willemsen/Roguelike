@@ -90,4 +90,45 @@ public class WeaponSO : ScriptableObject
         set { projectileLifetime = value; }
     }
 
+    [SerializeField] float orbDamage;
+    public float OrbDamage
+    {
+        get { return orbDamage; }
+        set { orbDamage = value; }
+    }
+
+    [SerializeField] float orbRadius;
+    public float OrbRadius
+    {
+        get { return orbRadius; }
+        set { orbRadius = value; }
+    }
+
+    [SerializeField] float orbLifeTime;
+    public float OrbLifeTime
+    {
+        get { return orbLifeTime; }
+        set { orbLifeTime = value; }
+    }
+
+    [SerializeField] float orbSlowStrength;
+    public float OrbSlowStrength
+    {
+        get { return orbSlowStrength; }
+        set { orbSlowStrength = value; }
+    }
+
+    [SerializeField] float orbcooldown;
+    public float OrbCooldown
+    {
+        get { return orbcooldown; }
+        set { orbcooldown = value; }
+    }
+
+    [SerializeField] float orbSpeed;
+    public float OrbSpeed
+    {
+        get { return orbSpeed; }
+        set { orbSpeed = value; }
+    }
 }

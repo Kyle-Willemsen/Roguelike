@@ -130,13 +130,13 @@ public class GunSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && canShootOrb)
         {
             var currentOrb = Instantiate(orb, orbSpawnPoint.position, Quaternion.identity);
-            currentOrb.GetComponent<Rigidbody>().velocity = transform.forward * orbSpeed;
+            currentOrb.GetComponent<Rigidbody>().velocity = transform.forward * weaponSO.OrbSpeed;
 
             orbActive = true;
             orbImage.fillAmount = 1;
 
             canShootOrb = false;
-            Invoke("OrbCooldown", orbCooldown);
+            Invoke("OrbCooldown", weaponSO.OrbCooldown);
         }
     }
 

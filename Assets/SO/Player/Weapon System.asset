@@ -13,12 +13,18 @@ MonoBehaviour:
   m_Name: Weapon System
   m_EditorClassIdentifier: 
   ammoCappacity: 21
-  reloadTime: 0.1452
+  reloadTime: 0.2
   fireRate: 0.2
   bulletSpeed: 25
   projectileDamage: 15
-  explodingBullets: 0
+  explodingBullets: 1
   beamDamage: 90
   beamCooldown: 5
   explodingDamage: 11
   projectileLifetime: 0.7
+  orbDamage: 22
+  orbRadius: 5
+  orbLifeTime: 3.5
+  orbSlowStrength: 15
+  orbcooldown: 5
+  orbSpeed: 6

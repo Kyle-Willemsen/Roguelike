@@ -53,6 +53,7 @@ MonoBehaviour:
     m_Bits: 128
   resetTimer: 0.22
   lifeSpan: 3.5
+  weaponSO: {fileID: 11400000, guid: 791d8a285665e1049ab27ccec9f1592c, type: 2}
 --- !u!54 &3750201881171138659
 Rigidbody:
   m_ObjectHideFlags: 0
