@@ -27,6 +27,7 @@ public class Beam : MonoBehaviour
             var direction = transform.TransformDirection(Vector3.forward);
             Physics.Raycast(origin, direction, out hit, range);
             Debug.DrawLine(origin, hit.point, Color.red);
+
             //Debug.Log(hit.collider);
             hits.Add(hit);
 

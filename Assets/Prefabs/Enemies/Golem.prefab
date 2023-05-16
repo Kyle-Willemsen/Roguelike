@@ -395,6 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 6713879668682176931}
+  healthText: {fileID: 0}
+  maxHealth: {fileID: 0}
 --- !u!1 &7447784075560597228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1530,7 @@ MonoBehaviour:
   attackRange: 5
   sightRange: 30
   isRanged: 0
-  isGolem: 0
+  isGolem: 1
   isWizard: 0
   playerInvisible: 0
   isBasicMelee: 0

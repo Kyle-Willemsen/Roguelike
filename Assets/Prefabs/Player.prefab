@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990115185}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -618,11 +618,11 @@ MonoBehaviour:
   canNowTeleport: 0
   layermask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundDistance: 0.4
   isGrounded: 0
-  groundCheck: {fileID: 0}
-  gravity: 0
+  groundCheck: {fileID: 8398040978406847482}
+  gravity: -9.81
   facingDir: {x: 0, y: 0, z: 0}
 --- !u!114 &5751856612675824369
 MonoBehaviour:
@@ -651,9 +651,7 @@ MonoBehaviour:
   orbSpeed: 6
   orbCooldown: 5
   canShootOrb: 0
-  beamImage: {fileID: 0}
   beamActive: 0
-  orbImage: {fileID: 0}
   orbActive: 0
 --- !u!114 &5751856612675824370
 MonoBehaviour:
@@ -4062,8 +4060,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2db93248326f11c4d91fa9b5b50c5bb0, type: 2}
+  - {fileID: 2100000, guid: 3081a87bacb8df04daa8808c170291b2, type: 2}
   - {fileID: 2100000, guid: 2db93248326f11c4d91fa9b5b50c5bb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

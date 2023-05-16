@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wave Room.unity
     guid: b35a7b304494f084bb32bac87e06959e
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 466aac0fba732f941b757e60dd91902d
   m_configObjects: {}

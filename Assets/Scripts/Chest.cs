@@ -13,6 +13,9 @@ public class Chest : MonoBehaviour
     private bool canOpen;
     private int randomItem;
 
+    public float radius;
+    public LayerMask layerMask;
+    [SerializeField] ParticleSystem particles;
 
     private void Start()
     {
@@ -22,42 +25,48 @@ public class Chest : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (canOpen)
+        if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.tag == "Player")
-            {
-                manager.openChestHUD.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    OpenChest();
-                    manager.openChestHUD.SetActive(false);
-                    canOpen = false;
-                }
-            }
+            manager.openChestHUD.SetActive(true);
         }
-        
-    }
 
+    }
     private void OnTriggerExit(Collider other)
     {
-        manager.openChestHUD.SetActive(false);
+        if (other.gameObject.tag == "Player")
+        {
+            manager.openChestHUD.SetActive(false);
+        }
     }
 
     private void Update()
     {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layerMask);
+        foreach (Collider collider in colliders)
+        {
+ 
+            if (Input.GetKeyDown(KeyCode.F) && canOpen)
+            {
+                manager.openChestHUD.SetActive(false);
+                OpenChest();
+                canOpen = false;
+                particles.Stop();
+            }
 
+        }
     }
-
+    
     private void OpenChest()
     {
+
+        CameraShake.Instance.ShakeCamera(0.6f, 0.2f);
         anim.SetBool("isOpen", true);
         randomItem = Random.Range(0, lootChance.Count);
 
         for (int i = 0; i <= amountOfLootToSpawn; i++)
-        {
-            
+        { 
             Instantiate(lootChance[randomItem], spawnLocation.position + new Vector3(Random.Range(0, 3), 1, 3), Quaternion.identity);
         }
     }
