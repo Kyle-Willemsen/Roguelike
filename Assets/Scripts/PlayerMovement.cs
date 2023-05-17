@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         MouseLook();
-        // Gravity();
+        Gravity();
         if (!canDash)
         {
             dashImage.fillAmount -= 1 / pStatsSO.DashCooldwon * Time.deltaTime;
