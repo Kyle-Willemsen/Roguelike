@@ -4,35 +4,20 @@ using UnityEngine;
 [CreateAssetMenu]
 public class WeaponSO : ScriptableObject
 {
-	[SerializeField] private float ammoCappacity;
-	public float AmmoCapacity
-	{
-		get { return ammoCappacity; }
-		set { ammoCappacity = value; }
-	}
+	//[SerializeField] private float ammoCappacity;
+	//public float AmmoCapacity
+	//{
+	//	get { return ammoCappacity; }
+	//	set { ammoCappacity = value; }
+	//}
 
-    [SerializeField] private float reloadTime;
-    public float ReloadTime
-    {
-        get { return reloadTime; }
-        set { reloadTime = value; }
-    }
-
-    [SerializeField] private float fireRate;
-    public float FireRate
-    {
-        get { return fireRate; }
-        set { fireRate = value; }
-    }
-
-
-    [SerializeField] private float bulletSpeed;
-    public float BulletSpeed
-    {
-        get { return bulletSpeed; }
-        set { bulletSpeed = value; }
-    }
-
+    //[SerializeField] private float reloadTime;
+    //public float ReloadTime
+    //{
+    //    get { return reloadTime; }
+    //    set { reloadTime = value; }
+    //}
+    [Header("Projectiles")]
 
     [SerializeField] private float projectileDamage;
     public float ProjectileDamage
@@ -41,12 +26,22 @@ public class WeaponSO : ScriptableObject
         set { projectileDamage = value; }
     }
 
-    //[SerializeField] private float piercingBullets;
-    //public float PiercingBullets
-    //{
-    //    get { return piercingBullets; }
-    //    set { piercingBullets = value; }
-    //}
+
+    [SerializeField] private float projectileFireRate;
+    public float ProjectileFireRate
+    {
+        get { return projectileFireRate; }
+        set { projectileFireRate = value; }
+    }
+
+
+    [SerializeField] private float projectileSpeed;
+    public float ProjectileSpeed
+    {
+        get { return projectileSpeed; }
+        set { projectileSpeed = value; }
+    }
+
 
     [SerializeField] private bool explodingBullets;
     public bool ExplodingBullets
@@ -55,13 +50,37 @@ public class WeaponSO : ScriptableObject
         set { explodingBullets = value; }
     }
 
+
+    [SerializeField] float explodingDamage;
+    public float ExplodingDamage
+    {
+        get { return explodingDamage; }
+        set { explodingDamage = value; }
+    }
+
+
+    [SerializeField] float projectileLifetime;
+    public float ProjectileLifetime
+    {
+        get { return projectileLifetime; }
+        set { projectileLifetime = value; }
+    }
+    //[SerializeField] private float piercingBullets;
+    //public float PiercingBullets
+    //{
+    //    get { return piercingBullets; }
+    //    set { piercingBullets = value; }
+    //}
+
+
+
     //[SerializeField] private bool immobilisingBullets;
     //public bool ImmobolisingBullets
     //{
     //    get { return immobilisingBullets; }
     //    set { immobilisingBullets = value; }
     //}
-
+    [Header("Lazer Beam Ability")]
     [SerializeField] private float beamDamage;
     public float BeamDamage
     {
@@ -76,20 +95,8 @@ public class WeaponSO : ScriptableObject
         set { beamCooldown = value; }
     }
 
-    [SerializeField] float explodingDamage;
-    public float ExplodingDamage
-    {
-        get { return explodingDamage; }
-        set { explodingDamage = value; }
-    }
 
-    [SerializeField] float projectileLifetime;
-    public float ProjectileLifetime
-    {
-        get { return projectileLifetime; }
-        set { projectileLifetime = value; }
-    }
-
+    [Header("Orb Ability")]
     [SerializeField] float orbDamage;
     public float OrbDamage
     {

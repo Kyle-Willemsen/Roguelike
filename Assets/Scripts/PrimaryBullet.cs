@@ -7,12 +7,16 @@ public class PrimaryBullet : MonoBehaviour
 {
     public float damage;
     [SerializeField] WeaponSO weaponSO;
-    
-    
-    
-     private void Update()
+
+
+    private void Start()
+    {
+        transform.Rotate(-90f, 0, 0);
+        Destroy(gameObject, weaponSO.ProjectileLifetime);
+    }
+    private void Update()
      {
-         Destroy(gameObject, weaponSO.ProjectileLifetime);
+
      }
     
     

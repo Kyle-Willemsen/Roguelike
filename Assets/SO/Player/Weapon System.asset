@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff59635c82190d4c9f143ab5cfb4636, type: 3}
   m_Name: Weapon System
   m_EditorClassIdentifier: 
-  ammoCappacity: 21
-  reloadTime: 0.2
-  fireRate: 0.2
-  bulletSpeed: 25
-  projectileDamage: 15
+  projectileDamage: 17.25
+  projectileFireRate: 0.112500004
+  projectileSpeed: 27.5
   explodingBullets: 1
+  explodingDamage: 13
+  projectileLifetime: 0.7
   beamDamage: 90
   beamCooldown: 5
-  explodingDamage: 11
-  projectileLifetime: 0.7
   orbDamage: 22
   orbRadius: 5
   orbLifeTime: 3.5

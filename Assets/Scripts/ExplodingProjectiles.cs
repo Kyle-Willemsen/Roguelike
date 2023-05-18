@@ -11,6 +11,7 @@ public class ExplodingProjectiles : MonoBehaviour
 
     private void Start()
     {
+        transform.Rotate(-90f, 0, 0);
         Destroy(gameObject, weaponSO.ProjectileLifetime);
     }
     private void OnCollisionEnter(Collision collision)

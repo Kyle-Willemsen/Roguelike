@@ -12,12 +12,13 @@ public class ProjectileUpgrades : MonoBehaviour
     public Transform main;
     public GameObject shopIndicator;
 
-    [SerializeField] float rifleDamageCost;
+    [SerializeField] float projectileDamageCost;
     [SerializeField] float explodingBulletCost;
     [SerializeField] float ammoCapCost;
     [SerializeField] float reloadSpeedCost;
     [SerializeField] float fireRateCost;
     [SerializeField] float bulletSpeedCost;
+    [SerializeField] float lifeSpanCost;
 
     [SerializeField] List<GameObject> randomUpgrades = new List<GameObject>();
     public float maxUpgrades = 3;
@@ -28,7 +29,10 @@ public class ProjectileUpgrades : MonoBehaviour
     // [SerializeField] GameObject projectileBaseDamageMenu;
     // [SerializeField] GameObject projectileLifespanMenu;
 
-    [SerializeField] List<GameObject> removed = new List<GameObject>();
+    //[SerializeField] List<GameObject> removed = new List<GameObject>();
+    public int random;
+    public float indicatorRadius;
+    [SerializeField] LayerMask layerMask;
 
     private void Start()
     {
@@ -36,8 +40,11 @@ public class ProjectileUpgrades : MonoBehaviour
 
         for (int i = 0; i < maxUpgrades; i++)
         {
-            var clone = Instantiate(randomUpgrades[Random.Range(0, randomUpgrades.Count)], transform.position, Quaternion.identity, main.transform);
-            //randomUpgrades.Remove();
+            random = Random.Range(0, randomUpgrades.Count);
+
+            //var clone = Instantiate(randomUpgrades[random], transform.position, Quaternion.identity, main.transform);
+            randomUpgrades[random].SetActive(true);
+            randomUpgrades.RemoveAt(random);
             //removed.Add(clone);
             
         }
@@ -45,23 +52,35 @@ public class ProjectileUpgrades : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.K))
-        {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, indicatorRadius, layerMask);
+        foreach (Collider collider in colliders)
+        { 
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                shopIndicator.SetActive(false);
+                gunSystem.canShoot = false;
+                OpenShop();
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    projecteileUpgradeHUD.SetActive(false);
+                }
+            }
 
         }
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             shopIndicator.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                gunSystem.canShoot = false;
-                UpgradeTime();
-            }
-
         }
+    }
+
+    private void OpenShop()
+    {
+        projecteileUpgradeHUD.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -71,17 +90,14 @@ public class ProjectileUpgrades : MonoBehaviour
         gunSystem.canShoot = true;
     }
 
-    private void UpgradeTime()
-    {
-        projecteileUpgradeHUD.SetActive(true);
-    }
 
-    public void UpgradeRifleDamage()
+    public void UpgradeProjectileDamage()
     {
-        if (fragments.Value >= rifleDamageCost)
+        if (fragments.Value >= projectileDamageCost)
         {
-            fragments.Value -= rifleDamageCost;
+            fragments.Value -= projectileDamageCost;
             weaponSO.ProjectileDamage += weaponSO.ProjectileDamage * 0.15f;
+            GameObject.Find("Projectile Damage").SetActive(false);
         }
     }
     public void UpgradeExplodingBulelts()
@@ -90,33 +106,19 @@ public class ProjectileUpgrades : MonoBehaviour
         {
             fragments.Value -= explodingBulletCost;
             weaponSO.ExplodingBullets = true;
+            GameObject.Find("Exploding Projectiles Menu").SetActive(false);
         }
     }
 
-    public void UpgradeAmmoCapacity()
-    {
-        if (fragments.Value >= ammoCapCost)
-        {
-            fragments.Value -= ammoCapCost;
-            weaponSO.AmmoCapacity += weaponSO.AmmoCapacity * 0.2f;
-        }
-    }
-
-    public void UpgradeReloadSpeed()
-    {
-        if (fragments.Value >= reloadSpeedCost)
-        {
-            fragments.Value -= reloadSpeedCost;
-            weaponSO.ReloadTime += weaponSO.ReloadTime * -0.1f;
-        }
-    }
 
     public void UpgradeFireRate()
     {
         if (fragments.Value >= fireRateCost)
         {
             fragments.Value -= fireRateCost;
-            weaponSO.FireRate += weaponSO.FireRate * -0.25f;
+            weaponSO.ProjectileFireRate += weaponSO.ProjectileFireRate * -0.25f;
+            GameObject.Find("Fire Rate").SetActive(false);
+
         }
     }
 
@@ -125,53 +127,80 @@ public class ProjectileUpgrades : MonoBehaviour
         if (fragments.Value >= bulletSpeedCost)
         {
             fragments.Value -= bulletSpeedCost;
-            weaponSO.BulletSpeed += weaponSO.BulletSpeed * 0.1f;
+            weaponSO.ProjectileSpeed += weaponSO.ProjectileSpeed * 0.1f;
+            GameObject.Find("Bullet Speed").SetActive(false);
         }
     }
 
-   // public void ActicateExplodingBullets()
-   // {
-   //
-   //     explodingBulletMenu.SetActive(true);
-   //     fireRateMenu.SetActive(false);
-   //     bulletSpeedMenu.SetActive(false);
-   //     projectileBaseDamageMenu.SetActive(false);
-   //     projectileLifespanMenu.SetActive(false);
-   // }
-   //
-   // public void ActivateFireRate()
-   // {
-   //     explodingBulletMenu.SetActive(false);
-   //     fireRateMenu.SetActive(true);
-   //     bulletSpeedMenu.SetActive(false);
-   //     projectileBaseDamageMenu.SetActive(false);
-   //     projectileLifespanMenu.SetActive(false);
-   // }
-   //
-   // public void ActivateBulletSpeed()
-   // {
-   //     explodingBulletMenu.SetActive(false);
-   //     fireRateMenu.SetActive(false);
-   //     bulletSpeedMenu.SetActive(true);
-   //     projectileBaseDamageMenu.SetActive(false);
-   //     projectileLifespanMenu.SetActive(false);
-   // }
-   //
-   // public void ActivateProjectileDamage()
-   // {
-   //     explodingBulletMenu.SetActive(false);
-   //     fireRateMenu.SetActive(false);
-   //     bulletSpeedMenu.SetActive(false);
-   //     projectileBaseDamageMenu.SetActive(true);
-   //     projectileLifespanMenu.SetActive(false);
-   // }
-   //
-   // public void ActivateProjectileLifespan()
-   // {
-   //     explodingBulletMenu.SetActive(false);
-   //     fireRateMenu.SetActive(false);
-   //     bulletSpeedMenu.SetActive(false);
-   //     projectileBaseDamageMenu.SetActive(false);
-   //     projectileLifespanMenu.SetActive(true);
-   // }
+    public void UpgradeProjectileLifeSpan()
+    {
+        if (fragments.Value >= lifeSpanCost)
+        {
+            fragments.Value -= lifeSpanCost;
+            weaponSO.ProjectileLifetime += weaponSO.ProjectileLifetime * 0.1f;
+            GameObject.Find("Projectile LifeSpan").SetActive(false);
+        }
+    }
+    //  public void UpgradeAmmoCapacity()
+    //  {
+    //      if (fragments.Value >= ammoCapCost)
+    //      {
+    //          fragments.Value -= ammoCapCost;
+    //          weaponSO.AmmoCapacity += weaponSO.AmmoCapacity * 0.2f;
+    //      }
+    //  }
+    //
+    //  public void UpgradeReloadSpeed()
+    //  {
+    //      if (fragments.Value >= reloadSpeedCost)
+    //      {
+    //          fragments.Value -= reloadSpeedCost;
+    //          weaponSO.ReloadTime += weaponSO.ReloadTime * -0.1f;
+    //      }
+    //  }
+    // public void ActicateExplodingBullets()
+    // {
+    //
+    //     explodingBulletMenu.SetActive(true);
+    //     fireRateMenu.SetActive(false);
+    //     bulletSpeedMenu.SetActive(false);
+    //     projectileBaseDamageMenu.SetActive(false);
+    //     projectileLifespanMenu.SetActive(false);
+    // }
+    //
+    // public void ActivateFireRate()
+    // {
+    //     explodingBulletMenu.SetActive(false);
+    //     fireRateMenu.SetActive(true);
+    //     bulletSpeedMenu.SetActive(false);
+    //     projectileBaseDamageMenu.SetActive(false);
+    //     projectileLifespanMenu.SetActive(false);
+    // }
+    //
+    // public void ActivateBulletSpeed()
+    // {
+    //     explodingBulletMenu.SetActive(false);
+    //     fireRateMenu.SetActive(false);
+    //     bulletSpeedMenu.SetActive(true);
+    //     projectileBaseDamageMenu.SetActive(false);
+    //     projectileLifespanMenu.SetActive(false);
+    // }
+    //
+    // public void ActivateProjectileDamage()
+    // {
+    //     explodingBulletMenu.SetActive(false);
+    //     fireRateMenu.SetActive(false);
+    //     bulletSpeedMenu.SetActive(false);
+    //     projectileBaseDamageMenu.SetActive(true);
+    //     projectileLifespanMenu.SetActive(false);
+    // }
+    //
+    // public void ActivateProjectileLifespan()
+    // {
+    //     explodingBulletMenu.SetActive(false);
+    //     fireRateMenu.SetActive(false);
+    //     bulletSpeedMenu.SetActive(false);
+    //     projectileBaseDamageMenu.SetActive(false);
+    //     projectileLifespanMenu.SetActive(true);
+    // }
 }

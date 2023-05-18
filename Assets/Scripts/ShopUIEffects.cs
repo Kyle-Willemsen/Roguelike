@@ -7,6 +7,7 @@ public class ShopUIEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public Vector3 originalSize;
     public Vector3 hoveredSize;
+   // [SerializeField] ProjectileUpgrades projUpgrades;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class ShopUIEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.localScale = hoveredSize;
+
     }
 
     public void OnPointerExit(PointerEventData eventData)

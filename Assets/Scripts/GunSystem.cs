@@ -20,6 +20,7 @@ public class GunSystem : MonoBehaviour
 
     [Header("Primary Stats")]
     public bool canShootPrimary;
+    //public ParticleSystem muzzle;
     //public float currentAmmo;
 
 
@@ -99,45 +100,56 @@ public class GunSystem : MonoBehaviour
                 canShootPrimary = false;
 
 
-                Invoke("ResetPrimary", weaponSO.FireRate);
+                Invoke("ResetPrimary", weaponSO.ProjectileFireRate);
 
                 if (weaponSO.ExplodingBullets)
                 {
                     var explodingBullets = Instantiate(explodingProjectile, shootPos.position, shootPos.rotation);
-                    explodingBullets.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.BulletSpeed;
+                    explodingBullets.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.ProjectileSpeed;
                 }
                 else
                 {
                     var currentBullet = Instantiate(normalProjectile, shootPos.position, shootPos.rotation);
-                    currentBullet.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.BulletSpeed;
+                    currentBullet.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.ProjectileSpeed;
+                    //muzzle.Play();
                 }
             }
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && canShootBeam)
         {
-            canShootBeam = false;
-            playerMovement.canMove = false;
-    
-            beamImage.fillAmount = 1;
-            lazerBeam.SetActive(true);
-            StartCoroutine(LazerBeam());
-            Invoke("BeamCooldown", beamCooldown);
-
-            beamActive = true;
-            CameraShake.Instance.ShakeCamera(1.5f, 0.35f);
+            LazerBeamAbility();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && canShootOrb)
         {
-            var currentOrb = Instantiate(orb, orbSpawnPoint.position, Quaternion.identity);
-            currentOrb.GetComponent<Rigidbody>().velocity = transform.forward * weaponSO.OrbSpeed;
-
-            orbActive = true;
-            orbImage.fillAmount = 1;
-
-            canShootOrb = false;
-            Invoke("OrbCooldown", weaponSO.OrbCooldown);
+            OrbAbility();
         }
+    }
+
+    private void LazerBeamAbility()
+    {
+        canShootBeam = false;
+        playerMovement.canMove = false;
+
+        beamImage.fillAmount = 1;
+        lazerBeam.SetActive(true);
+        StartCoroutine(LazerBeam());
+        Invoke("BeamCooldown", beamCooldown);
+
+        beamActive = true;
+        CameraShake.Instance.ShakeCamera(1.5f, 0.35f);
+    }
+
+    private void OrbAbility()
+    {
+        var currentOrb = Instantiate(orb, orbSpawnPoint.position, Quaternion.identity);
+        currentOrb.GetComponent<Rigidbody>().velocity = transform.forward * weaponSO.OrbSpeed;
+
+        orbActive = true;
+        orbImage.fillAmount = 1;
+
+        canShootOrb = false;
+        Invoke("OrbCooldown", weaponSO.OrbCooldown);
     }
 
     IEnumerator LazerBeam()
