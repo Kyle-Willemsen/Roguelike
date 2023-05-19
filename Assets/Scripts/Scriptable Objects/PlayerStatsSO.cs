@@ -12,11 +12,11 @@ public class PlayerStatsSO : ScriptableObject
         set { playerHealth = value; }
     }
 
-    [SerializeField] private float maxHealth;
+    [SerializeField] private float playerMaxHealth;
     public float PlayerMaxHealth
     {
-        get { return maxHealth; }
-        set { maxHealth = value; }
+        get { return playerMaxHealth; }
+        set { playerMaxHealth = value; }
     }
 
     [SerializeField] private float potionValue;

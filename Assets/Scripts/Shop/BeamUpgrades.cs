@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BeamUpgrades : MonoBehaviour
 {
+    [SerializeField] List<GameObject> beamUpgrades = new List<GameObject>();
     [SerializeField] WeaponSO weaponSO;
     GunSystem gunSystem;
     PlayerStats pStats;
@@ -13,27 +14,56 @@ public class BeamUpgrades : MonoBehaviour
 
     public float beamDamageCost;
     public float beamCooldownCost;
+    private int random;
+
+    public float indicatorRadius = 8;
+    [SerializeField] LayerMask layerMask;
 
 
     private void Start()
     {
         pStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
+
+        for (int i = 0; i < 2; i++)
         {
-            shopIndicator.SetActive(true);
+            random = Random.Range(0, beamUpgrades.Count);
+
+            beamUpgrades[random].SetActive(true);
+            beamUpgrades.RemoveAt(random);
+
+        }
+    }
+
+    private void Update()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, indicatorRadius, layerMask);
+        foreach (Collider collider in colliders)
+        {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                shopIndicator.SetActive(false);
                 gunSystem.canShoot = false;
-                UpgradeTime();
+                OpenShop();
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    beamUpgradeHUD.SetActive(false);
+                }
             }
 
         }
     }
-    private void UpgradeTime()
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            shopIndicator.SetActive(true);
+        }
+    }
+
+    private void OpenShop()
     {
         beamUpgradeHUD.SetActive(true);
     }
@@ -45,12 +75,14 @@ public class BeamUpgrades : MonoBehaviour
         gunSystem.canShoot = true;
     }
 
+
     public void BeamDamage()
     {
         if (fragments.Value >= beamDamageCost)
         {
             fragments.Value -= beamDamageCost;
             weaponSO.BeamDamage += weaponSO.BeamDamage * 0.15f;
+            GameObject.Find("Beam Damage").SetActive(false);
         }
     }
 
@@ -60,6 +92,7 @@ public class BeamUpgrades : MonoBehaviour
         {
             fragments.Value -= beamCooldownCost;
             weaponSO.BeamCooldown -= weaponSO.BeamCooldown * 0.1f;
+            GameObject.Find("Beam Cooldown").SetActive(false);
         }
     }
 }

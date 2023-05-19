@@ -9,19 +9,19 @@ public class ProjectileUpgrades : MonoBehaviour
     GunSystem gunSystem;
 
     public GameObject projecteileUpgradeHUD;
-    public Transform main;
+    //public Transform main;
     public GameObject shopIndicator;
 
     [SerializeField] float projectileDamageCost;
     [SerializeField] float explodingBulletCost;
-    [SerializeField] float ammoCapCost;
-    [SerializeField] float reloadSpeedCost;
+    //[SerializeField] float ammoCapCost;
+    //[SerializeField] float reloadSpeedCost;
     [SerializeField] float fireRateCost;
     [SerializeField] float bulletSpeedCost;
     [SerializeField] float lifeSpanCost;
 
     [SerializeField] List<GameObject> randomUpgrades = new List<GameObject>();
-    public float maxUpgrades = 3;
+    //private float maxUpgrades = 3;
 
     // [SerializeField] GameObject explodingBulletMenu;
     // [SerializeField] GameObject fireRateMenu;
@@ -38,15 +38,13 @@ public class ProjectileUpgrades : MonoBehaviour
     {
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
 
-        for (int i = 0; i < maxUpgrades; i++)
+        for (int i = 0; i < 3; i++)
         {
-            random = Random.Range(0, randomUpgrades.Count);
-
-            //var clone = Instantiate(randomUpgrades[random], transform.position, Quaternion.identity, main.transform);
+            random = Random.Range(0, randomUpgrades.Count - 1);
+            //Debug.Log("i = " +i);
+            //Debug.Log("random = " + random);
             randomUpgrades[random].SetActive(true);
             randomUpgrades.RemoveAt(random);
-            //removed.Add(clone);
-            
         }
     }
 
@@ -70,7 +68,7 @@ public class ProjectileUpgrades : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {

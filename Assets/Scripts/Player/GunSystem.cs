@@ -29,14 +29,14 @@ public class GunSystem : MonoBehaviour
     public float beamLifespan;
     //public float secondarySpeed;
     public bool canShootBeam;
-    public float beamCooldown;
+    //public float beamCooldown;
     //private bool beamActive;
 
     [Header("Orb Stats")]
     public GameObject orb;
     public Transform orbSpawnPoint;
     public float orbSpeed;
-    public float orbCooldown;
+    //public float orbCooldown;
     public bool canShootOrb;
 
     [Header("Beam Cooldown")]
@@ -71,7 +71,7 @@ public class GunSystem : MonoBehaviour
 
         if (!canShootOrb)
         {
-            orbImage.fillAmount -= 1 / orbCooldown * Time.deltaTime;
+            orbImage.fillAmount -= 1 / weaponSO.OrbCooldown * Time.deltaTime;
 
             if (orbImage.fillAmount <= 0)
             {
@@ -81,7 +81,7 @@ public class GunSystem : MonoBehaviour
         }
         if (!canShootBeam)
         {
-            beamImage.fillAmount -= 1 / beamCooldown * Time.deltaTime;
+            beamImage.fillAmount -= 1 / weaponSO.BeamCooldown * Time.deltaTime;
 
             if (beamImage.fillAmount <= 0)
             {
@@ -134,7 +134,7 @@ public class GunSystem : MonoBehaviour
         beamImage.fillAmount = 1;
         lazerBeam.SetActive(true);
         StartCoroutine(LazerBeam());
-        Invoke("BeamCooldown", beamCooldown);
+        Invoke("BeamCooldown", weaponSO.BeamCooldown);
 
         beamActive = true;
         CameraShake.Instance.ShakeCamera(1.5f, 0.35f);

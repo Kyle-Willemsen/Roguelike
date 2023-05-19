@@ -9,19 +9,19 @@ public class HealthBar : MonoBehaviour
     public Slider healthBar;
     private float currentVelocity = 0f;
     public TextMeshProUGUI healthText;
-    [SerializeField] SingleValuesSO maxHealth;
+    [SerializeField] PlayerStatsSO maxHealth;
 
     public void SetMaxHealth(float health)
     {
-        healthBar.value = health;
         healthBar.maxValue = health;
-        healthText.text = health + "/" + maxHealth.Value;
+        healthBar.value = health;
+        healthText.text = health + "/" + maxHealth.PlayerMaxHealth;
     }
 
     public void SetHealth(float health)
     {
         //float currentHealth =  Mathf.SmoothDamp(healthBar.value, health, ref currentVelocity, 100 * Time.deltaTime);
         healthBar.value = health;
-        healthText.text = health + "/" + maxHealth.Value;
+        healthText.text = maxHealth.PlayerHealth + "/" + maxHealth.PlayerMaxHealth;
     }
 }
