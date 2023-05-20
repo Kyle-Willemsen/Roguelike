@@ -5667,11 +5667,9 @@ MonoBehaviour:
   lazerBeam: {fileID: 1990115185}
   beamLifespan: 0.5
   canShootBeam: 0
-  beamCooldown: 5
   orb: {fileID: 5113286311143559293, guid: 4739e508d7c5b724dac3e7e3c325f002, type: 3}
   orbSpawnPoint: {fileID: 2846602867941740192}
   orbSpeed: 6
-  orbCooldown: 5
   canShootOrb: 0
   beamActive: 0
   orbActive: 0

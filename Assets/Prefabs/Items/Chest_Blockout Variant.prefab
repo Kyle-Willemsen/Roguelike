@@ -94,6 +94,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5773588177627064082, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88e5ade6cea2b3e459f53f4c7ed268bf, type: 2}
+    - target: {fileID: -5761023895665221491, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c1eb7ab7cb7e5644a096b38e24ed140, type: 2}
     - target: {fileID: -431863935879337227, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -104,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
       propertyPath: m_Name
-      value: Chest_Blockout (1)
+      value: Chest_Blockout Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3956935463432770993, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}
       propertyPath: m_LocalPosition.z
@@ -223,9 +231,13 @@ MonoBehaviour:
   - {fileID: 1976317342851034635, guid: bdb43e4e4d4bb284a9049fb2f8917052, type: 3}
   - {fileID: 1976317342851034635, guid: bdb43e4e4d4bb284a9049fb2f8917052, type: 3}
   - {fileID: 9206877563051673848, guid: cb8f11517ded2bc41b8cd60c895c451c, type: 3}
-  uiDisplay: {fileID: 0}
   amountOfLootToSpawn: 7
   spawnLocation: {fileID: 1848939143}
+  radius: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  particles: {fileID: 0}
 --- !u!4 &4568714233643261588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11cdfd2a0cc0b284b942705fed451b91, type: 3}

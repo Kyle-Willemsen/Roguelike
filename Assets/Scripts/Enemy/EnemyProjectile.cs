@@ -6,6 +6,10 @@ public class EnemyProjectile : MonoBehaviour
 {
     public float damage;
 
+    private void Start()
+    {
+        transform.Rotate(-90, 0, 0);
+    }
     private void Update()
     {
         Destroy(gameObject, 4);
