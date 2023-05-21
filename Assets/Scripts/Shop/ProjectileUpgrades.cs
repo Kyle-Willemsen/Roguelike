@@ -37,6 +37,8 @@ public class ProjectileUpgrades : MonoBehaviour
     private void Start()
     {
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
+       // projecteileUpgradeHUD = GameObject.Find("Projectile Upgrades");
+       // shopIndicator = GameObject.Find("OpenShop");
 
         for (int i = 0; i < 3; i++)
         {

@@ -22,6 +22,9 @@ public class BeamUpgrades : MonoBehaviour
 
     private void Start()
     {
+       // beamUpgradeHUD = GameObject.Find("Lazerbeam Upgrades");
+       // shopIndicator = GameObject.Find("OpenShop");
+
         pStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
 

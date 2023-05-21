@@ -32,6 +32,8 @@ public class PlayerUpgrades : MonoBehaviour
     {
         pStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
+       //playerUpgradeHUD = GameObject.Find("PlayerUpgrades");
+       //shopIndicator = GameObject.Find("OpenShop");
 
         for (int i = 0; i < 3; i++)
         {

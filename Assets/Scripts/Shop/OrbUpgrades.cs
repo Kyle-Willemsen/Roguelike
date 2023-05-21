@@ -26,6 +26,9 @@ public class OrbUpgrades : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       // orbUpgradeHUD = GameObject.Find("Orb Upgrades");
+       // shopIndicator = GameObject.Find("OpenShop");
+
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
         random = Random.Range(0, orbList.Count - 1);
 

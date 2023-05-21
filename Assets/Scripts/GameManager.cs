@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject deathScreen;
     PlayerMovement pMovement;
 
+    public GameObject shopRoom;
     private void Start()
     {
         pMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateRooms()
     {
-        if (roomsEntered.Value <= 2)
+        if (roomsEntered.Value <= 3)
         {
 
             randomScene = Random.Range(0, 4);
@@ -77,9 +78,9 @@ public class GameManager : MonoBehaviour
             Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
         }
 
-        if (roomsEntered.Value == 3)
+        if (roomsEntered.Value == 4)
         {
-            Instantiate(shopSelectionRoom, roomSpawnPoints[1].position, Quaternion.identity);
+            Instantiate(shopRoom, roomSpawnPoints[1].position, Quaternion.identity);
         }
     }
 
