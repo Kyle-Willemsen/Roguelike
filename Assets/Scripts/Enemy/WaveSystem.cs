@@ -61,7 +61,7 @@ public class WaveSystem : MonoBehaviour
 
         for (int i = 0; i <= amountOfEnemiesToSpawn; i++)
         {
-            Instantiate(waveOne[Random.Range(0, 6)], spawnPoints[Random.Range(0, 5)].position, Quaternion.identity);
+            Instantiate(waveOne[Random.Range(0, waveOne.Capacity)], spawnPoints[Random.Range(0, 5)].position, Quaternion.identity);
         }
     }
 }

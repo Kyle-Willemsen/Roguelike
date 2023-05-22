@@ -13,7 +13,7 @@ public class SelectRandomShops : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            randomShop = Random.Range(0, shops.Count + 1);
+            randomShop = Random.Range(0, shops.Count);
           //randomSpawn = Random.Range(0, spawnPoints.Count);
 
             Instantiate(shops[randomShop], spawnPoints[randomSpawn].position, Quaternion.identity);

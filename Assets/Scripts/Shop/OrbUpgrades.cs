@@ -30,14 +30,14 @@ public class OrbUpgrades : MonoBehaviour
        // shopIndicator = GameObject.Find("OpenShop");
 
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
-        random = Random.Range(0, orbList.Count - 1);
+        random = Random.Range(0, orbList.Count);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < maxUpgrades; i++)
         {
             //Debug.Log(random);
 
             orbList[random].SetActive(true);
-            orbList.RemoveAt(random);
+          //  orbList.RemoveAt(random);
 
         }
     }

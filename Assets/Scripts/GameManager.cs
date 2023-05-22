@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public SingleValuesSO fragmentsCount;
 
     [SerializeField] SingleValuesSO roomsEntered;
+    [SerializeField] WeaponSO weaponSO;
     public int randomSpawner;
     public int randomEnemy;
     public float numberOfEnemiesLeft;
@@ -70,15 +71,15 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateRooms()
     {
-        if (roomsEntered.Value <= 3)
+        if (roomsEntered.Value <= 2)
         {
 
-            randomScene = Random.Range(0, 4);
+            randomScene = Random.Range(1, 4);
             Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
             Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
         }
 
-        if (roomsEntered.Value == 4)
+        if (roomsEntered.Value == 3)
         {
             Instantiate(shopRoom, roomSpawnPoints[1].position, Quaternion.identity);
         }
@@ -101,8 +102,11 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-
-    }
+        ResetStats();
+        SceneManager.LoadScene("Start");
+        Time.timeScale = 1f;
+        Debug.Log("Reset");
+    }   
 
     public void Options()
     {
@@ -118,6 +122,37 @@ public class GameManager : MonoBehaviour
     {
         deathScreen.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ResetStats()
+    {
+        pStatsSO.PlayerMaxHealth = 100;
+        pStatsSO.PlayerHealth = 100;
+        pStatsSO.DashBomb = false;
+        pStatsSO.TeleportDash = false;
+        pStatsSO.InvisibleAbility = false;
+        pStatsSO.DashCooldwon = 0.96f;
+        pStatsSO.PotionCounter = 0;
+
+        weaponSO.ProjectileDamage = 15f;
+        weaponSO.ProjectileFireRate = 0.2f;
+        weaponSO.ProjectileSpeed = 25f;
+        weaponSO.ExplodingBullets = false;
+        weaponSO.ExplodingDamage = 13f;
+        weaponSO.BeamCooldown = 0.7f;
+        weaponSO.BeamCooldown = 4;
+        weaponSO.BeamDamage = 90;
+        weaponSO.OrbDamage = 22;
+        weaponSO.OrbRadius = 5;
+        weaponSO.OrbLifeTime = 3.5f;
+        weaponSO.OrbSlowStrength = 15f;
+        weaponSO.OrbCooldown = 5;
+        weaponSO.OrbSpeed = 6f;
     }
 
 }

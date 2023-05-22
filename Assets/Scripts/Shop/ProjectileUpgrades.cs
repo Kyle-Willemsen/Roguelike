@@ -42,11 +42,11 @@ public class ProjectileUpgrades : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            random = Random.Range(0, randomUpgrades.Count - 1);
+            random = Random.Range(0, randomUpgrades.Count);
             //Debug.Log("i = " +i);
             //Debug.Log("random = " + random);
             randomUpgrades[random].SetActive(true);
-            randomUpgrades.RemoveAt(random);
+           // randomUpgrades.RemoveAt(random);
         }
     }
 
