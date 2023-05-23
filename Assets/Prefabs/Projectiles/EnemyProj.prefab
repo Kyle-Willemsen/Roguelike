@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7345111892122154172}
   - component: {fileID: 5339682909166156318}
   - component: {fileID: 4306073846128785737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,9 +111,9 @@ GameObject:
   - component: {fileID: 1267104986028382890}
   - component: {fileID: 225189003743443590}
   - component: {fileID: 4570486786053906811}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyProj
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,8 +126,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201683083923324199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.389, y: 1.876, z: 1.901}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: -0.389, y: 1.8623, z: 1.901}
+  m_LocalScale: {x: 0.84201103, y: 0.84201103, z: 0.84201103}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7513672240361120407}

@@ -37,6 +37,7 @@ public class PlayerStats : MonoBehaviour
         if (pStatsSo.PlayerHealth > pStatsSo.PlayerMaxHealth)
         {
             pStatsSo.PlayerHealth = pStatsSo.PlayerMaxHealth;
+            healthbar.healthText.text = pStatsSo.PlayerHealth + "/" + pStatsSo.PlayerMaxHealth;
         }
 
        // if (maxHealthSOActive)

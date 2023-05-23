@@ -46,7 +46,7 @@ public class ProjectileUpgrades : MonoBehaviour
             //Debug.Log("i = " +i);
             //Debug.Log("random = " + random);
             randomUpgrades[random].SetActive(true);
-           // randomUpgrades.RemoveAt(random);
+            randomUpgrades.RemoveAt(random);
         }
     }
 

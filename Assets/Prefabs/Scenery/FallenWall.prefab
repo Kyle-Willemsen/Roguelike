@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7776509251655553078
 Transform:
@@ -107,9 +107,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -185,9 +193,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -263,9 +279,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -341,9 +365,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -419,9 +451,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -497,9 +537,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -575,9 +623,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -653,9 +709,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -731,9 +795,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -809,9 +881,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -887,9 +967,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -965,9 +1053,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1043,9 +1139,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6407312227225567674, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Name
       value: Cube_Low (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7280088227946244771, guid: faa4953c3c3b9a9409a6db4dc0af6344, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -2927,6 +2927,7 @@ GameObject:
   - component: {fileID: 2441647547959928352}
   - component: {fileID: 8929610286428422894}
   - component: {fileID: 2567569807343345296}
+  - component: {fileID: 4992190672835104284}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -2952,8 +2953,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -154.6}
-  m_SizeDelta: {x: 300, y: 75}
+  m_AnchoredPosition: {x: 150, y: -143.29002}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2441647547959928352
 CanvasRenderer:
@@ -3036,7 +3037,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8929610286428422894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8963117666053751149}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4992190672835104284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400326692902668454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655984c446aca824e9d0cc1f2ff5886d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalSize: {x: 0, y: 0, z: 0}
+  hoveredSize: {x: 0, y: 0, z: 0}
 --- !u!1 &1543847776762755042
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,7 +6140,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 4363880641322019081}
   m_HandleRect: {fileID: 0}
@@ -7908,6 +7935,7 @@ GameObject:
   - component: {fileID: 531261999458997788}
   - component: {fileID: 4836701709034182987}
   - component: {fileID: 8033709672361462180}
+  - component: {fileID: 4052826874043757939}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -7933,8 +7961,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -96.05}
-  m_SizeDelta: {x: 300, y: 75}
+  m_AnchoredPosition: {x: 150, y: -84.14501}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &531261999458997788
 CanvasRenderer:
@@ -8017,7 +8045,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4836701709034182987}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8963117666053751154}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4052826874043757939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026717991459655625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655984c446aca824e9d0cc1f2ff5886d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalSize: {x: 0, y: 0, z: 0}
+  hoveredSize: {x: 0, y: 0, z: 0}
 --- !u!1 &5057756750507378679
 GameObject:
   m_ObjectHideFlags: 0
@@ -9964,6 +10018,7 @@ GameObject:
   - component: {fileID: 5207138058531876896}
   - component: {fileID: 2962665174836694044}
   - component: {fileID: 5034160185162523183}
+  - component: {fileID: 89756422911124886}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -9989,8 +10044,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -37.5}
-  m_SizeDelta: {x: 300, y: 75}
+  m_AnchoredPosition: {x: 150, y: -25}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5207138058531876896
 CanvasRenderer:
@@ -10073,7 +10128,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2962665174836694044}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8963117666053751149}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &89756422911124886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957465744548185341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655984c446aca824e9d0cc1f2ff5886d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalSize: {x: 0, y: 0, z: 0}
+  hoveredSize: {x: 0, y: 0, z: 0}
 --- !u!1 &5975116765547175579
 GameObject:
   m_ObjectHideFlags: 0
@@ -11950,6 +12031,7 @@ GameObject:
   - component: {fileID: 1477806240017113281}
   - component: {fileID: 639980089942702524}
   - component: {fileID: 4691515432385571303}
+  - component: {fileID: 6155479122681000725}
   m_Layer: 5
   m_Name: Quit to Desktop
   m_TagString: Untagged
@@ -11975,8 +12057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -213.15001}
-  m_SizeDelta: {x: 300, y: 75}
+  m_AnchoredPosition: {x: 150, y: -202.43503}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1477806240017113281
 CanvasRenderer:
@@ -12059,7 +12141,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 639980089942702524}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8963117666053751149}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6155479122681000725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8107332495827617907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655984c446aca824e9d0cc1f2ff5886d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalSize: {x: 0, y: 0, z: 0}
+  hoveredSize: {x: 0, y: 0, z: 0}
 --- !u!1 &8160867289490382965
 GameObject:
   m_ObjectHideFlags: 0
@@ -14208,7 +14316,7 @@ MonoBehaviour:
   soulsCount: {fileID: 11400000, guid: 5a526b22ab3113e48a7e5b2b7dcc3211, type: 2}
   fragmentsCount: {fileID: 11400000, guid: 5a13168cb0f05704e88c23c240e33ac7, type: 2}
   roomsEntered: {fileID: 11400000, guid: 7baedb6d87e6c9c438ce0e88ba545f05, type: 2}
-  weaponSO: {fileID: 0}
+  weaponSO: {fileID: 11400000, guid: 791d8a285665e1049ab27ccec9f1592c, type: 2}
   randomSpawner: 0
   randomEnemy: 0
   numberOfEnemiesLeft: 0
@@ -14434,8 +14542,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.4, y: -113.8}
-  m_SizeDelta: {x: 328.48, y: 450}
+  m_AnchoredPosition: {x: 13.4, y: -56.90001}
+  m_SizeDelta: {x: 328.48, y: 336.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986903642674723082
 MonoBehaviour:
@@ -14455,7 +14563,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: -215.8
+  m_Spacing: -99.62
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

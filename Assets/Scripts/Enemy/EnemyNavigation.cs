@@ -44,6 +44,8 @@ public class EnemyNavigation : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(walkPointSet);
+
         if (pMovement.isInvisible)
         {
             playerInvisible = true;
@@ -58,6 +60,7 @@ public class EnemyNavigation : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange)
         {
             Patrolling();
+
         }
         if (playerInSightRange && !playerInAttackRange)
         {
@@ -73,13 +76,13 @@ public class EnemyNavigation : MonoBehaviour
     {
         if (!walkPointSet)
         {
-            SearchWalkPoint();
+           SearchWalkPoint();
             //anim.SetBool("isMoving", false);
         }
         if (walkPointSet)
         {
             navAgent.SetDestination(walkPoint);
-           // anim.SetBool("isMoving", true);
+            // anim.SetBool("isMoving", true);
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;

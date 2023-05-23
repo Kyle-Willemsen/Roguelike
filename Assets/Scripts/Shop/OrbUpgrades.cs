@@ -12,7 +12,7 @@ public class OrbUpgrades : MonoBehaviour
 
     public GameObject orbUpgradeHUD;
     public GameObject shopIndicator;
-    private float maxUpgrades = 3;
+   
     private int random;
     public float indicatorRadius;
     [SerializeField] LayerMask layerMask;
@@ -32,12 +32,12 @@ public class OrbUpgrades : MonoBehaviour
         gunSystem = GameObject.Find("Player").GetComponent<GunSystem>();
         random = Random.Range(0, orbList.Count);
 
-        for (int i = 0; i < maxUpgrades; i++)
+        for (int i = 0; i < 3; i++)
         {
             //Debug.Log(random);
 
             orbList[random].SetActive(true);
-          //  orbList.RemoveAt(random);
+            orbList.RemoveAt(random);
 
         }
     }

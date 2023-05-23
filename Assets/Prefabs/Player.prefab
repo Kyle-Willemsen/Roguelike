@@ -9086,7 +9086,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2db93248326f11c4d91fa9b5b50c5bb0, type: 2}
+  - {fileID: 2100000, guid: b68aef935f7bbe64e9f7c11be971cefe, type: 2}
   - {fileID: 2100000, guid: 3081a87bacb8df04daa8808c170291b2, type: 2}
   - {fileID: 2100000, guid: b68aef935f7bbe64e9f7c11be971cefe, type: 2}
   m_StaticBatchInfo:
@@ -9118,8 +9118,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -1.4553984, y: 1.79047, z: 0.09471151}
-    m_Extent: {x: 1.6813205, y: 1.111385, z: 0.8751985}
+    m_Center: {x: -0.30684584, y: 1.79047, z: 0.09471154}
+    m_Extent: {x: 0.5327681, y: 1.111385, z: 0.8751985}
   m_DirtyAABB: 0
 --- !u!1001 &2420438678650336037
 PrefabInstance:

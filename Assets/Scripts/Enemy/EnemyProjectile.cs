@@ -22,6 +22,13 @@ public class EnemyProjectile : MonoBehaviour
             collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
             Destroy(gameObject);
         }
+
+
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Enemy")
+        {
+            Physics.IgnoreCollision(collision.collider, collision.collider);
+        }
+
         Destroy(gameObject);
     }
 }

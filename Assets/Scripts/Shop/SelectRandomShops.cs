@@ -16,7 +16,8 @@ public class SelectRandomShops : MonoBehaviour
             randomShop = Random.Range(0, shops.Count);
           //randomSpawn = Random.Range(0, spawnPoints.Count);
 
-            Instantiate(shops[randomShop], spawnPoints[randomSpawn].position, Quaternion.identity);
+            GameObject shop = Instantiate(shops[randomShop], spawnPoints[randomSpawn].position, Quaternion.identity);
+           shop.SetActive(true);
             shops.RemoveAt(randomShop);
             spawnPoints.RemoveAt(randomSpawn);
         }

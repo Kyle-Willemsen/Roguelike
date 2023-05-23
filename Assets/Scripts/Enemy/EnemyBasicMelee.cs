@@ -7,16 +7,27 @@ public class EnemyBasicMelee : MonoBehaviour
     public float damage;
     public BoxCollider attackCollider;
     public float attackLifeSpan;
+    EnemyNavigation enemyNav;
+    Animator anim;
 
+    private void Start()
+    {
+        enemyNav = GetComponent<EnemyNavigation>();
+        anim = GetComponent<Animator>();
+    }
     public void Attack()
     {
         attackCollider.enabled = true;
+        enemyNav.navAgent.speed = 0;
         Invoke("ResetAttack", attackLifeSpan);
+        anim.SetBool("Attack", true);
     }
 
     private void ResetAttack()
     {
         attackCollider.enabled = false;
+        enemyNav.navAgent.speed = 17;
+        anim.SetBool("Attack", false);
     }
 
     private void OnTriggerEnter(Collider other)

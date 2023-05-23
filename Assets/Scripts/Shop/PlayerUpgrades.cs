@@ -37,6 +37,7 @@ public class PlayerUpgrades : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            Debug.Log(i);
             random = Random.Range(0, randomUpgrades.Count);
 
             randomUpgrades[random].SetActive(true);

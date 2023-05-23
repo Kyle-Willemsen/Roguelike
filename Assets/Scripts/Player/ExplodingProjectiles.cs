@@ -22,11 +22,18 @@ public class ExplodingProjectiles : MonoBehaviour
             collider.GetComponent<EnemyStats>().TakeDamage(weaponSO.ExplodingDamage);
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Physics.IgnoreCollision(collision.collider, collision.collider);
+        }
         
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(weaponSO.ProjectileDamage);
         }
+
+
+
         Instantiate(vfxExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

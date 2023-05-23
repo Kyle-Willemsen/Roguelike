@@ -153,6 +153,8 @@ public class GameManager : MonoBehaviour
         weaponSO.OrbSlowStrength = 15f;
         weaponSO.OrbCooldown = 5;
         weaponSO.OrbSpeed = 6f;
+
+        roomsEntered.Value = 0f;
     }
 
 }
