@@ -12,7 +12,6 @@ public class ShopResetRooms : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            roomsEntered.Value = 0f;
             SceneManager.LoadScene(manager.randomScene);
         }
     }

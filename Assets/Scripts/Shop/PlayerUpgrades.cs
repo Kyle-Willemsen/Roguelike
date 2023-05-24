@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerUpgrades : MonoBehaviour
 {
-    PlayerStats pStats;
+    [SerializeField] PlayerStats pStats;
     GunSystem gunSystem;
     [SerializeField] SingleValuesSO runeMaxHealth;
     [SerializeField] SingleValuesSO currency;
@@ -37,9 +37,7 @@ public class PlayerUpgrades : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            Debug.Log(i);
             random = Random.Range(0, randomUpgrades.Count);
-
             randomUpgrades[random].SetActive(true);
             randomUpgrades.RemoveAt(random);
 
@@ -78,6 +76,7 @@ public class PlayerUpgrades : MonoBehaviour
             currency.Value -= costOfMaxHealth;
             pStats.UpgradeMaxHealth(runeMaxHealth.Value);
             GameObject.Find("UpgradeMaxHealth").SetActive(false);
+            Debug.Log("Gimme my money");
         }
     }
 
@@ -86,6 +85,7 @@ public class PlayerUpgrades : MonoBehaviour
         if (currency.Value >= costOfSmallPotion)
         {
             currency.Value -= costOfSmallPotion;
+            pStatsSO.PotionCounter++;
             pStatsSO.PotionCounter++;
             GameObject.Find("Small Potions").SetActive(false);
         }

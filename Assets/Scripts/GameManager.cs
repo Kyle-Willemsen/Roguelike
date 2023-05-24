@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     PlayerMovement pMovement;
 
     public GameObject shopRoom;
+    public GameObject waveRoom;
+    public GameObject manual;
+
     private void Start()
     {
         pMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
@@ -71,18 +74,31 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateRooms()
     {
-        if (roomsEntered.Value <= 2)
+        if (roomsEntered.Value <= 1 || roomsEntered.Value > 2 && roomsEntered.Value <= 3)
         {
-
             randomScene = Random.Range(1, 4);
-            Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
-            Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
+            int randomRoom = Random.Range(0, rooms.Count);
+           
+            for (int i = 0; i < roomSpawnPoints.Count + 1; i++)
+            {
+            Instantiate(rooms[randomRoom], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
+            roomSpawnPoints.RemoveAt(randomRoom);
+            }
+
+
+            //Instantiate(rooms[Random.Range(0, rooms.Count)], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
         }
 
-        if (roomsEntered.Value == 3)
+        if (roomsEntered.Value == 2)
         {
             Instantiate(shopRoom, roomSpawnPoints[1].position, Quaternion.identity);
         }
+
+        if (roomsEntered.Value == 4)
+        {
+            Instantiate(waveRoom, roomSpawnPoints[1].position, Quaternion.identity);
+        }
+        randomScene = Random.Range(1, 4);
     }
 
     private void Pause()
@@ -108,9 +124,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Reset");
     }   
 
-    public void Options()
+    public void Manual()
     {
+        manual.SetActive(true);
+    }
 
+    public void UnselectManual()
+    {
+        manual.SetActive(false);
     }
 
     public void MainMenu()
@@ -133,6 +154,8 @@ public class GameManager : MonoBehaviour
     {
         pStatsSO.PlayerMaxHealth = 100;
         pStatsSO.PlayerHealth = 100;
+        HealthBar hbar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
+        hbar.healthText.text = pStatsSO.PlayerHealth + "/" + pStatsSO.PlayerMaxHealth;
         pStatsSO.DashBomb = false;
         pStatsSO.TeleportDash = false;
         pStatsSO.InvisibleAbility = false;

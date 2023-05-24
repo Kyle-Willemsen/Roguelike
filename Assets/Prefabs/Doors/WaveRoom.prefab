@@ -577,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6d886510ad0d84ab3ab39ac285a9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomsEntered: {fileID: 11400000, guid: 7baedb6d87e6c9c438ce0e88ba545f05, type: 2}
 --- !u!1 &8230897954908220760
 GameObject:
   m_ObjectHideFlags: 0

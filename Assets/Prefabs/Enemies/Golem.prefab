@@ -1527,7 +1527,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   walkPointRange: 10
-  attackRange: 5
+  attackRange: 6
   sightRange: 30
   isRanged: 0
   isGolem: 1
