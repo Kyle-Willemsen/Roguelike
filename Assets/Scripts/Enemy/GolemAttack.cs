@@ -11,17 +11,28 @@ public class GolemAttack : MonoBehaviour
     public LayerMask layerMask;
     public float damage;
 
+    public GameObject rock;
+    public bool canThrowRock;
+
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         enemyNav = GetComponent<EnemyNavigation>();
+
+        canThrowRock = true;
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void Attack()
     {
         anim.SetBool("isAttacking", true);
         anim.SetBool("isMoving", false);
+        //Invoke("SecondAttack", 0.1f);
     }
 
     public void Slam()
@@ -34,5 +45,17 @@ public class GolemAttack : MonoBehaviour
             }
         anim.SetBool("isAttacking", false);
         anim.SetBool("isMoving", true);
+    }
+
+
+
+    public void SecondAttack()
+    {
+        if (canThrowRock)
+        {
+            Instantiate(rock, new Vector3(enemyNav.player.position.x, enemyNav.player.position.y -1, enemyNav.player.position.z), Quaternion.identity);
+            canThrowRock = false;
+        }
+
     }
 }

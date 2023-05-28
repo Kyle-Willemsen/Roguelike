@@ -7,7 +7,7 @@ public class PlayerUpgrades : MonoBehaviour
     [SerializeField] PlayerStats pStats;
     GunSystem gunSystem;
     [SerializeField] SingleValuesSO runeMaxHealth;
-    [SerializeField] SingleValuesSO currency;
+    [SerializeField] SingleValuesSO fragments;
     [SerializeField] PlayerStatsSO pStatsSO;
 
 
@@ -44,6 +44,27 @@ public class PlayerUpgrades : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            shopIndicator.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        shopIndicator.SetActive(false);
+        playerUpgradeHUD.SetActive(false);
+        gunSystem.canShoot = true;
+    }
+
+    private void OpenShop()
+    {
+        playerUpgradeHUD.SetActive(true);
+    }
+
+
 
     private void Update()
     {
@@ -71,9 +92,9 @@ public class PlayerUpgrades : MonoBehaviour
    // }
     public void UpgradeMaxHealth()
     {
-        if (currency.Value >= costOfMaxHealth)
+        if (fragments.Value >= costOfMaxHealth)
         {
-            currency.Value -= costOfMaxHealth;
+            fragments.Value -= costOfMaxHealth;
             pStats.UpgradeMaxHealth(runeMaxHealth.Value);
             GameObject.Find("UpgradeMaxHealth").SetActive(false);
             Debug.Log("Gimme my money");
@@ -82,9 +103,9 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void PurchaseSmallPotion()
     {
-        if (currency.Value >= costOfSmallPotion)
+        if (fragments.Value >= costOfSmallPotion)
         {
-            currency.Value -= costOfSmallPotion;
+            fragments.Value -= costOfSmallPotion;
             pStatsSO.PotionCounter++;
             pStatsSO.PotionCounter++;
             GameObject.Find("Small Potions").SetActive(false);
@@ -93,9 +114,9 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void DashCooldownPurchase()
     {
-        if (currency.Value >= dashCooldownCost)
+        if (fragments.Value >= dashCooldownCost)
         {
-            currency.Value -= dashCooldownCost;
+            fragments.Value -= dashCooldownCost;
             pStatsSO.DashCooldwon += pStatsSO.DashCooldwon * -0.2f;
             GameObject.Find("DashCooldown").SetActive(false);
         }
@@ -103,9 +124,9 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void PurchaseTeleportDash()
     {
-        if (currency.Value >= teleportDashCost)
+        if (fragments.Value >= teleportDashCost)
         {
-            currency.Value -= teleportDashCost;
+            fragments.Value -= teleportDashCost;
             pStatsSO.TeleportDash = true;
             GameObject.Find("Teleport Dash").SetActive(false);
         }
@@ -113,9 +134,9 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void PurchaseBombDash()
     {
-        if (currency.Value >= bombDashCost)
+        if (fragments.Value >= bombDashCost)
         {
-            currency.Value -= bombDashCost;
+            fragments.Value -= bombDashCost;
             pStatsSO.DashBomb = true;
             GameObject.Find("BombDash").SetActive(false);
         }
@@ -123,31 +144,14 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void PurchaseInvisibiltyDash()
     {
-        if (currency.Value >= invisibiltyDashCost)
+        if (fragments.Value >= invisibiltyDashCost)
         {
-            currency.Value -= invisibiltyDashCost;
+            fragments.Value -= invisibiltyDashCost;
             pStatsSO.InvisibleAbility = true;
             GameObject.Find("Invisibility Dash").SetActive(false);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            shopIndicator.SetActive(true);
-        }
-    }
 
-    private void OpenShop()
-    {
-        playerUpgradeHUD.SetActive(true);
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        shopIndicator.SetActive(false);
-        playerUpgradeHUD.SetActive(false);
-        gunSystem.canShoot = true;
-    }
 }

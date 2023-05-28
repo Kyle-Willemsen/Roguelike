@@ -121,7 +121,6 @@ public class GameManager : MonoBehaviour
         ResetStats();
         SceneManager.LoadScene("Start");
         Time.timeScale = 1f;
-        Debug.Log("Reset");
     }   
 
     public void Manual()
@@ -162,11 +161,12 @@ public class GameManager : MonoBehaviour
         pStatsSO.DashCooldwon = 0.96f;
         pStatsSO.PotionCounter = 0;
 
-        weaponSO.ProjectileDamage = 15f;
+        weaponSO.ProjectileDamage = 16f;
         weaponSO.ProjectileFireRate = 0.2f;
         weaponSO.ProjectileSpeed = 25f;
+        weaponSO.ProjectileLifetime = 0.8f;
         weaponSO.ExplodingBullets = false;
-        weaponSO.ExplodingDamage = 13f;
+        weaponSO.ExplodingDamage = 9f;
         weaponSO.BeamCooldown = 0.7f;
         weaponSO.BeamCooldown = 4;
         weaponSO.BeamDamage = 90;
@@ -178,6 +178,8 @@ public class GameManager : MonoBehaviour
         weaponSO.OrbSpeed = 6f;
 
         roomsEntered.Value = 0f;
+        soulsCount.Value = 0f;
+        fragmentsCount.Value = 0f;
     }
 
 }

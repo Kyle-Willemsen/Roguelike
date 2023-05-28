@@ -311,9 +311,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7486152100105623112, guid: be2d61e44526ccd40b0bb05209a53fdf, type: 3}
+      propertyPath: lifeSpanCost
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486152100105623112, guid: be2d61e44526ccd40b0bb05209a53fdf, type: 3}
       propertyPath: shopIndicator
       value: 
       objectReference: {fileID: 1406471132}
+    - target: {fileID: 7486152100105623112, guid: be2d61e44526ccd40b0bb05209a53fdf, type: 3}
+      propertyPath: explodingBulletCost
+      value: 1350
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486152100105623112, guid: be2d61e44526ccd40b0bb05209a53fdf, type: 3}
+      propertyPath: projectileDamageCost
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 7486152100105623112, guid: be2d61e44526ccd40b0bb05209a53fdf, type: 3}
       propertyPath: projecteileUpgradeHUD
       value: 
@@ -514,13 +526,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1721673690}
     - target: {fileID: 115017503730020282, guid: 5f9dd093c8af4764ab3ac106bf6dbb8b, type: 3}
+      propertyPath: fragments
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a526b22ab3113e48a7e5b2b7dcc3211, type: 2}
+    - target: {fileID: 115017503730020282, guid: 5f9dd093c8af4764ab3ac106bf6dbb8b, type: 3}
       propertyPath: shopIndicator
       value: 
       objectReference: {fileID: 1406471132}
     - target: {fileID: 115017503730020282, guid: 5f9dd093c8af4764ab3ac106bf6dbb8b, type: 3}
+      propertyPath: costOfMaxHealth
+      value: 1350
+      objectReference: {fileID: 0}
+    - target: {fileID: 115017503730020282, guid: 5f9dd093c8af4764ab3ac106bf6dbb8b, type: 3}
       propertyPath: playerUpgradeHUD
       value: 
       objectReference: {fileID: 129289488}
+    - target: {fileID: 115017503730020282, guid: 5f9dd093c8af4764ab3ac106bf6dbb8b, type: 3}
+      propertyPath: costOfSmallPotion
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 115017503730020282, guid: 5f9dd093c8af4764ab3ac106bf6dbb8b, type: 3}
       propertyPath: randomUpgrades.Array.size
       value: 6
@@ -1554,7 +1578,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 508740252, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
       propertyPath: m_AmplitudeGain
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 16590892592016249, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2147,6 +2171,10 @@ PrefabInstance:
       propertyPath: shopIndicator
       value: 
       objectReference: {fileID: 1406471132}
+    - target: {fileID: 1280103053084713842, guid: 772e3db26db7b6f4fa06923fa0995a39, type: 3}
+      propertyPath: beamDamageCost
+      value: 1350
+      objectReference: {fileID: 0}
     - target: {fileID: 1280103053084713842, guid: 772e3db26db7b6f4fa06923fa0995a39, type: 3}
       propertyPath: beamUpgradeHUD
       value: 

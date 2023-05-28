@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   playerMaxHealth: 100
-  potionValue: 15
+  potionValue: 20
   potionCounter: 0
   dashCooldwon: 0.96
   baseMoveSpeed: 10

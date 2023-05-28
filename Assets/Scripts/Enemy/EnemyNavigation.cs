@@ -65,6 +65,10 @@ public class EnemyNavigation : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
+            if (isGolem)
+            {
+                GetComponent<GolemAttack>().SecondAttack();
+            }
         }
         if (playerInSightRange && playerInAttackRange)
         {

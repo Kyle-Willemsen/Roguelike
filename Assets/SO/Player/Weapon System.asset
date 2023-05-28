@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff59635c82190d4c9f143ab5cfb4636, type: 3}
   m_Name: Weapon System
   m_EditorClassIdentifier: 
-  projectileDamage: 15
+  projectileDamage: 16
   projectileFireRate: 0.2
   projectileSpeed: 25
   explodingBullets: 0
-  explodingDamage: 13
-  projectileLifetime: 0.7
+  explodingDamage: 9
+  projectileLifetime: 0.8
   beamDamage: 90
   beamCooldown: 4
   orbDamage: 22

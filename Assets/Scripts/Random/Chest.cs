@@ -11,6 +11,7 @@ public class Chest : MonoBehaviour
     public Transform spawnLocation;
     Animator anim;
     private bool canOpen;
+    bool isOpen;
     private int randomItem;
 
     public float radius;
@@ -27,7 +28,7 @@ public class Chest : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !isOpen)
         {
             manager.openChestHUD.SetActive(true);
         }
@@ -60,7 +61,7 @@ public class Chest : MonoBehaviour
     
     private void OpenChest()
     {
-
+        isOpen = true;
         CameraShake.Instance.ShakeCamera(0.6f, 0.2f);
         anim.SetBool("isOpen", true);
         randomItem = Random.Range(0, lootChance.Count);

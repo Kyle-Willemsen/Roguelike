@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
         //potionValue = pStatsSo.PotionValue;
 
         healthbar.SetMaxHealth(pStatsSo.PlayerMaxHealth);
-        pStatsSo.PlayerHealth = pStatsSo.PlayerMaxHealth;
+        pStatsSo.PlayerHealth = pStatsSo.PlayerHealth;
     }
 
     private void Update()

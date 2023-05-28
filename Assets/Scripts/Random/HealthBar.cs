@@ -14,8 +14,8 @@ public class HealthBar : MonoBehaviour
     public void SetMaxHealth(float health)
     {
         healthBar.maxValue = health;
-        healthBar.value = health;
-        healthText.text = health + "/" + pStatsSO.PlayerMaxHealth;
+        healthBar.value = pStatsSO.PlayerHealth;
+        healthText.text = pStatsSO.PlayerHealth + "/" + pStatsSO.PlayerMaxHealth;
     }
 
     public void SetHealth(float health)
