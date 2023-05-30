@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateRooms()
     {
+        randomScene = Random.Range(1, 4);
         if (roomsEntered.Value <= 1 || roomsEntered.Value > 2 && roomsEntered.Value <= 3)
         {
             randomScene = Random.Range(1, 4);
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(waveRoom, roomSpawnPoints[1].position, Quaternion.identity);
         }
-        randomScene = Random.Range(1, 4);
+        Debug.Log(randomScene);
     }
 
     private void Pause()
