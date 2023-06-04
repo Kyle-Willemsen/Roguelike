@@ -56,6 +56,11 @@ public class GolemAttack : MonoBehaviour
             Instantiate(rock, new Vector3(enemyNav.player.position.x, enemyNav.player.position.y -1, enemyNav.player.position.z), Quaternion.identity);
             canThrowRock = false;
         }
+        Invoke("ResetThrow", 4);
+    }
 
+    private void ResetThrow()
+    {
+        canThrowRock = true;
     }
 }

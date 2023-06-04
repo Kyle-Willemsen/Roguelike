@@ -111,6 +111,10 @@ public class EnemyNavigation : MonoBehaviour
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
+        if (isGolem)
+        {
+            GetComponent<GolemAttack>().SecondAttack();
+        }
     }
 
     public void AttackPlayer()

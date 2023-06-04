@@ -66,10 +66,10 @@ PrefabInstance:
     - target: {fileID: -3173742303330092006, guid: 591ff3825f5c629459d7aa587e3e84fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b0cc038fc912be34d8c6bbe69e59a4a2, type: 2}
+      objectReference: {fileID: 2100000, guid: 6d95a5684fbfa2244a433ee37f169636, type: 2}
     - target: {fileID: 919132149155446097, guid: 591ff3825f5c629459d7aa587e3e84fc, type: 3}
       propertyPath: m_Name
-      value: PointyWall
+      value: PointyWall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8578604421884858720, guid: 591ff3825f5c629459d7aa587e3e84fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
