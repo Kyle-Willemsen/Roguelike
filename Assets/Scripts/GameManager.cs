@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerStatsSO pStatsSO;
     public SingleValuesSO soulsCount;
     public SingleValuesSO fragmentsCount;
+    GunSystem gunsystem;
 
     [SerializeField] SingleValuesSO roomsEntered;
     [SerializeField] WeaponSO weaponSO;
@@ -43,10 +44,16 @@ public class GameManager : MonoBehaviour
     public GameObject shopRoom;
     public GameObject waveRoom;
     public GameObject manual;
+    public bool wavesCompleted = false;
 
+
+    AudioManager audioManager;
     private void Start()
     {
+        gunsystem = FindObjectOfType<GunSystem>();
+        audioManager = FindObjectOfType<AudioManager>();
         pMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        Physics.IgnoreLayerCollision(8, 10);
     }
 
 
@@ -57,6 +64,8 @@ public class GameManager : MonoBehaviour
             Pause();
         }
 
+
+
         potionCounter = pStatsSO.PotionCounter;
 
         soulsHUD.text = "" + soulsCount.Value;
@@ -64,7 +73,7 @@ public class GameManager : MonoBehaviour
         potionHUD.text = "" + potionCounter;
         enemiesLeftHUD.text = "Enemies Left: " + numberOfEnemiesLeft;
 
-        if (numberOfEnemiesLeft <= 0 && !waveInProgress && !doorsActive)
+        if (numberOfEnemiesLeft <= 0 && !waveInProgress && !doorsActive && wavesCompleted)
         {
             doorsActive = true;
             InstantiateRooms();
@@ -79,11 +88,12 @@ public class GameManager : MonoBehaviour
         {
             randomScene = Random.Range(1, 4);
             int randomRoom = Random.Range(0, rooms.Count);
-           
+            audioManager.Play("PortalSpawn");
             for (int i = 0; i < roomSpawnPoints.Count + 1; i++)
             {
-            Instantiate(rooms[randomRoom], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.identity);
-            roomSpawnPoints.RemoveAt(randomRoom);
+                Instantiate(rooms[randomRoom], roomSpawnPoints[Random.Range(0, roomSpawnPoints.Count)].position, Quaternion.Euler(0, 90, 0));
+                roomSpawnPoints.RemoveAt(randomRoom);
+                
             }
 
 
@@ -92,12 +102,14 @@ public class GameManager : MonoBehaviour
 
         if (roomsEntered.Value == 2)
         {
-            Instantiate(shopRoom, roomSpawnPoints[1].position, Quaternion.identity);
+            audioManager.Play("PortalSpawn");
+            Instantiate(shopRoom, roomSpawnPoints[1].position, Quaternion.Euler(0, 90, 0));
         }
 
         if (roomsEntered.Value == 4)
         {
-            Instantiate(waveRoom, roomSpawnPoints[1].position, Quaternion.identity);
+            Instantiate(waveRoom, roomSpawnPoints[1].position, Quaternion.Euler(0, 90, 0));
+            audioManager.Play("PortalSpawn");
         }
         Debug.Log(randomScene);
     }
@@ -159,6 +171,7 @@ public class GameManager : MonoBehaviour
         pStatsSO.DashBomb = false;
         pStatsSO.TeleportDash = false;
         pStatsSO.InvisibleAbility = false;
+        gunsystem.canMelee = true;
         pStatsSO.DashCooldwon = 0.96f;
         pStatsSO.PotionCounter = 0;
 

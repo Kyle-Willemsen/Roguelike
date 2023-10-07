@@ -57,7 +57,7 @@ Material:
     m_Colors:
     - _Bloom: {r: 0, g: 0.5103218, b: 0.6226415, a: 0}
     - _Bottom: {r: 0, g: 5.5030656, b: 11.181761, a: 0}
-    - _Distortion_Speed: {r: 0, g: 2, b: 0, a: 0}
+    - _Distortion_Speed: {r: 0, g: 1, b: 0, a: 0}
     - _Distortion_Tiling: {r: 2, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4676956847865284510

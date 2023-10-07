@@ -65,6 +65,7 @@ public class EnemyRanged : MonoBehaviour
     private void ResetAttack()
     {
         canAttack = true;
+        enemyNav.canMove = true;
     }
     private void ResetTrippleAttack()
     {

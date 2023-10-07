@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     //References
-    private CharacterController controller;
+    [HideInInspector] public CharacterController controller;
+    PlayerStats pStats;
     public PlayerStatsSO pStatsSO;
     GunSystem gunSystem;
     private Camera cam;
@@ -48,11 +49,13 @@ public class PlayerMovement : MonoBehaviour
     //Random
     [HideInInspector] public Vector3 facingDir;
     private Vector3 pointToLook;
-    private Vector3 move;
+    public Vector3 move;
 
+    AudioManager audioManager;
 
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         controller = GetComponent<CharacterController>();
         gunSystem = GetComponent<GunSystem>();
         cam = Camera.main;
@@ -82,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine("DashCoroutine");
+            audioManager.Play("PlayerDash");
+            CameraShake.Instance.ShakeCamera(1.75f, 0.15f);
             if (pStatsSO.DashBomb)
             {
                 Instantiate(bomb, transform.position, Quaternion.identity);
@@ -114,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         {
             facingDir = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
 
-            move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
             controller.Move(move * Time.deltaTime * currentSpeed);
 
             if (move != Vector3.zero)
@@ -158,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
         while (Time.time < startTime + dashTime)
         {
+            //pStats.invincible = true;
             canDash = false;
             dashImage.fillAmount = 1;
             controller.Move(move * dashSpeed * Time.deltaTime);
@@ -165,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
         }
         yield return new WaitForSeconds(pStatsSO.DashCooldwon);
         canDash = true;
+        //pStats.invincible = false;
     }
 
     private IEnumerator Invisibility()

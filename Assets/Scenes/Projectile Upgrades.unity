@@ -1578,7 +1578,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 508740252, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
       propertyPath: m_AmplitudeGain
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 16590892592016249, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2035,11 +2035,11 @@ PrefabInstance:
     - target: {fileID: 8963117666053751149, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
       propertyPath: roomSpawnPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 2120405713}
+      objectReference: {fileID: 0}
     - target: {fileID: 8963117666053751149, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
       propertyPath: roomSpawnPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 2120405713}
+      objectReference: {fileID: 0}
     - target: {fileID: 8963117666617242112, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.13036
@@ -2431,34 +2431,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6028972070412582200, guid: b9dec94ad1b362a4285f074d34ddb29f, type: 3}
   m_PrefabInstance: {fileID: 1765834886}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2120405712
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2120405713}
-  m_Layer: 0
-  m_Name: w
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2120405713
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120405712}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.266752, y: 16.002928, z: 71.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

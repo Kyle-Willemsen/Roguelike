@@ -8,14 +8,26 @@ public class PlayerStats : MonoBehaviour
     HealthBar healthbar;
     [SerializeField] SingleValuesSO runeMaxHealth;
     [SerializeField] PlayerStatsSO pStatsSo;
+    [SerializeField] WeaponSO weaponStatsSO;
+    PlayerMovement playerMovement;
+    GunSystem gunSystem;
+    Animator anim;
 
-   // public bool maxHealthSOActive;
+    // public bool maxHealthSOActive;
     public float soulsValue;
     public float fragmentsValue;
+
+    public bool invincible = false;
+    public float invincibilityTime;
+
+    public float healTime;
 
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
+        gunSystem = GetComponent<GunSystem>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         healthbar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
 
@@ -23,6 +35,8 @@ public class PlayerStats : MonoBehaviour
 
         healthbar.SetMaxHealth(pStatsSo.PlayerMaxHealth);
         pStatsSo.PlayerHealth = pStatsSo.PlayerHealth;
+        healthbar.SetMaxMana(weaponStatsSO.MaxMana);
+        weaponStatsSO.CurrentMana = weaponStatsSO.CurrentMana;
     }
 
     private void Update()
@@ -47,7 +61,7 @@ public class PlayerStats : MonoBehaviour
 
         if (pStatsSo.PotionCounter > 0 && Input.GetKeyDown(KeyCode.Q))
         {
-            IncreaseHealth(pStatsSo.PotionValue);
+            StartCoroutine("Healing");
             pStatsSo.PotionCounter--;
         }
 
@@ -55,10 +69,25 @@ public class PlayerStats : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        pStatsSo.PlayerHealth -= damage;
-        healthbar.SetHealth(pStatsSo.PlayerHealth);
+        if (!invincible)
+        {
+            pStatsSo.PlayerHealth -= damage;
+            healthbar.SetHealth(pStatsSo.PlayerHealth);
+            Invincible();
+        }
+
     }
 
+    public void Invincible()
+    {
+        invincible = true;
+        Invoke("InvincibilityTimer", invincibilityTime);
+    }
+
+    public void InvincibilityTimer()
+    {
+        invincible = false;
+    }
     public void UpgradeMaxHealth(float value)
     {
         pStatsSo.PlayerMaxHealth += value;
@@ -67,8 +96,30 @@ public class PlayerStats : MonoBehaviour
         //maxHealthSOActive = false;
     }
 
-    public void IncreaseHealth(float additionalHealth)
+    public IEnumerator Healing()
     {
+        float startTime = Time.time;
+
+        while (Time.time < startTime + healTime)
+        {
+            anim.SetBool("isHealing", true);
+            playerMovement.canMove = false;
+            playerMovement.canDash = false;
+            gunSystem.canMelee = false;
+            yield return null;
+        }
+        yield return new WaitForSeconds(healTime);
+        HealFinish(pStatsSo.PotionValue);
+    }
+
+
+    public void HealFinish(float additionalHealth)
+    {
+        anim.SetBool("isHealing", false);
+        playerMovement.canMove = true;
+        playerMovement.canDash = true;
+        gunSystem.canMelee = true;
+
         pStatsSo.PlayerHealth += additionalHealth;
         healthbar.SetHealth(pStatsSo.PlayerHealth);
     }

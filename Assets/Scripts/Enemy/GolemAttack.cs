@@ -13,6 +13,7 @@ public class GolemAttack : MonoBehaviour
 
     public GameObject rock;
     public bool canThrowRock;
+    public GameObject slamIcon;
 
 
     private void Start()
@@ -45,9 +46,14 @@ public class GolemAttack : MonoBehaviour
             }
         anim.SetBool("isAttacking", false);
         anim.SetBool("isMoving", true);
+        Instantiate(slamIcon, attackPoint.transform.position, Quaternion.identity);
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(attackPoint.transform.position, attackRadius);
+    }
 
     public void SecondAttack()
     {

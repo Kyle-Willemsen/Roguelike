@@ -20,10 +20,21 @@ public class EnemyStats : MonoBehaviour
     public Transform lootDropPos;
 
     public bool soulsRoom;
+
+    public BoxCollider boxCollider;
+    public GameObject spawnIcon;
+    public GameObject mesh;
+    EnemyNavigation enemyNav;
+
     //[SerializeField] SingleValuesSO roomsEntered;
 
     private void Awake()
     {
+        enemyNav = GetComponent<EnemyNavigation>();
+        enemyNav.enabled = false;
+        boxCollider.enabled = false;
+        mesh.SetActive(false);
+        Invoke("SpawnEnemy", 1.4f);
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
 
@@ -67,6 +78,13 @@ public class EnemyStats : MonoBehaviour
         ft.GetComponent<TextMesh>().text = damage.ToString();
     }
 
+    public void SpawnEnemy()
+    {
+        enemyNav.enabled = true;
+        boxCollider.enabled = true;
+        mesh.SetActive(true);
+        Destroy(spawnIcon);
+    }
     private void Dead()
     {
         for (int i = 0; i < Random.Range(soulMinDrop, soulMaxDrop); i++)

@@ -65,6 +65,21 @@ public class WeaponSO : ScriptableObject
         get { return projectileLifetime; }
         set { projectileLifetime = value; }
     }
+
+    [SerializeField] float maxMana;
+    public float MaxMana
+    {
+        get { return maxMana; }
+        set { maxMana = value; }
+    }
+
+    [SerializeField] float currentMana;
+    public float CurrentMana
+    {
+        get { return currentMana; }
+        set { currentMana = value; }
+    }
+
     //[SerializeField] private float piercingBullets;
     //public float PiercingBullets
     //{

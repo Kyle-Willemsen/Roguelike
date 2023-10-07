@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 16
   projectileFireRate: 0.2
-  projectileSpeed: 25
+  projectileSpeed: 35
   explodingBullets: 0
   explodingDamage: 9
   projectileLifetime: 0.8
+  maxMana: 250
+  currentMana: 66
   beamDamage: 90
   beamCooldown: 4
   orbDamage: 22

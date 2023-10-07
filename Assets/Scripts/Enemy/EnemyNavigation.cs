@@ -8,7 +8,7 @@ public class EnemyNavigation : MonoBehaviour
     //References
     [HideInInspector] public NavMeshAgent navAgent;
     //private Animator anim;
-    public Transform player;
+    [HideInInspector] public Transform player;
     PlayerMovement pMovement;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
@@ -24,10 +24,14 @@ public class EnemyNavigation : MonoBehaviour
     public bool isRanged;
     public bool isGolem;
     public bool isWizard;
+    public bool canMove = true;
 
     public bool playerInvisible;
     public bool isBasicMelee;
     public bool isLunge;
+
+
+    public LayerMask environmentLayer;
 
 
     private void Awake()
@@ -44,8 +48,6 @@ public class EnemyNavigation : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(walkPointSet);
-
         if (pMovement.isInvisible)
         {
             playerInvisible = true;
@@ -57,18 +59,18 @@ public class EnemyNavigation : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer) && !playerInvisible;
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange)
+        if (!playerInSightRange && !playerInAttackRange && canMove)
         {
             Patrolling();
 
         }
-        if (playerInSightRange && !playerInAttackRange)
+        if (playerInSightRange && !playerInAttackRange && canMove)
         {
             ChasePlayer();
-            if (isGolem)
-            {
-                GetComponent<GolemAttack>().SecondAttack();
-            }
+            //if (isGolem)
+            //{
+            //    GetComponent<GolemAttack>().SecondAttack();
+            //}
         }
         if (playerInSightRange && playerInAttackRange)
         {
@@ -80,7 +82,7 @@ public class EnemyNavigation : MonoBehaviour
     {
         if (!walkPointSet)
         {
-           SearchWalkPoint();
+            SearchWalkPoint();
             //anim.SetBool("isMoving", false);
         }
         if (walkPointSet)
@@ -111,17 +113,19 @@ public class EnemyNavigation : MonoBehaviour
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
-        if (isGolem)
-        {
-            GetComponent<GolemAttack>().SecondAttack();
-        }
+       // if (isGolem)
+       // {
+       //     GetComponent<GolemAttack>().SecondAttack();
+       // }
     }
 
     public void AttackPlayer()
     {
+        canMove = false;
         navAgent.SetDestination(transform.position);
         transform.LookAt(player);
-        
+
+
 
         if (isRanged)
         {
@@ -143,16 +147,6 @@ public class EnemyNavigation : MonoBehaviour
         {
             GetComponent<EnemyLunge>().Attack();
         }
-        
-    }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Debug.Log("DrawGizmo");
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, attackRange);
-    //
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawWireSphere(transform.position, sightRange);
-    //}
+    }
 }

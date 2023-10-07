@@ -9,7 +9,9 @@ public class GunSystem : MonoBehaviour
 {
     [Header("References")]
     PlayerMovement playerMovement;
+    PlayerStats pStats;
     public WeaponSO weaponSO;
+    HealthBar healthBar;
     Animator anim;
     //public GameObject gun;
     public Transform shootPos;
@@ -46,11 +48,33 @@ public class GunSystem : MonoBehaviour
     [Header("Orb Cooldown")]
     private Image orbImage;
     public bool orbActive = false;
-
+    AudioManager audioManager;
     //public List<Transform> gunBarrels = new List<Transform>();
 
+
+    public int barMana;
+
+    public float normalProjMana;
+    public float explodProjMana;
+    public bool currentlyShooting = false;
+    public bool regenMana = false;
+
+    public BoxCollider meleeCollider;
+    public float meleeDamageBase;
+    public float meleeDamageCurrent;
+    public ParticleSystem meleeParticle;
+    public float meleeDistance;
+    public bool canMelee = true;
+    public float meleeTime;
+
+    public float meleeCombatTimer;
+    public float meleeCombatTotalTime;
+    public int meleeCombatStreak;
     private void Start()
     {
+        pStats = GetComponent<PlayerStats>();
+        healthBar = FindObjectOfType<HealthBar>();
+        audioManager = FindObjectOfType<AudioManager>();
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
 
@@ -61,13 +85,76 @@ public class GunSystem : MonoBehaviour
         beamImage = GameObject.Find("beamCD").GetComponent<Image>();
         orbImage.fillAmount = 0;
         beamImage.fillAmount = 0;
+        meleeCollider.enabled = false;
 
+        weaponSO.CurrentMana = weaponSO.MaxMana;
+        barMana = Mathf.RoundToInt(weaponSO.CurrentMana);
 
         //currentAmmo = weaponSO.AmmoCapacity;
     }
+
+
+
+
     private void Update()
     {
         Shoot();
+        barMana = Mathf.RoundToInt(weaponSO.CurrentMana);
+
+        meleeCombatStreak = Mathf.Clamp(meleeCombatStreak, 0, 3);
+        if (Input.GetKeyDown(KeyCode.Mouse1) && canMelee)
+        {
+            meleeCombatTimer = meleeCombatTotalTime;
+            meleeCombatStreak++;
+            StartCoroutine("MeleeAttack");
+            if (meleeCombatStreak > 1 && meleeCombatStreak < 3)
+            {
+                Debug.Log("Streak");
+                meleeDamageCurrent += 10;
+                //meleeCombatTimer = meleeCombatTotalTime;
+                //meleeCombatStreak++;
+                //StartCoroutine("MeleeAttack");
+            }
+            if (meleeCombatStreak == 3)
+            {
+                Debug.Log("COMBOOOO");
+                meleeDamageCurrent += 25;
+                canMelee = false;
+                Invoke("ResetCombatCombo", 1.5f);
+            }
+        }
+
+        if (meleeCombatTimer > 0)
+        {
+            meleeCombatTimer -= Time.deltaTime;
+
+        }
+
+        if (meleeCombatTimer <= 0)
+        {
+            meleeCombatTimer = 0;
+            meleeDamageCurrent = meleeDamageBase;
+            meleeCombatStreak = 0;
+        }
+
+        if (!regenMana && weaponSO.CurrentMana < weaponSO.MaxMana)
+        {
+            Invoke("ManaRegen", 1.5f);
+        }
+
+        if (regenMana)
+        {
+            weaponSO.CurrentMana+= Time.deltaTime * 15;
+            //weaponSO.CurrentMana = Mathf.RoundToInt(weaponSO.CurrentMana);
+            
+            healthBar.SetMana(barMana);
+        }
+
+
+        if (weaponSO.CurrentMana >= weaponSO.MaxMana)
+        {
+            weaponSO.CurrentMana = weaponSO.MaxMana;
+        }
 
         if (!canShootOrb)
         {
@@ -91,6 +178,42 @@ public class GunSystem : MonoBehaviour
         }
     }
 
+    private IEnumerator MeleeAttack()
+    {
+        float startTime = Time.time;
+
+        while (Time.time < startTime + meleeTime)
+        {
+            canMelee = false;
+            canShoot = false;
+            meleeCollider.enabled = true;
+            playerMovement.canMove = false;
+            playerMovement.canDash = false;
+            meleeParticle.Play();
+            meleeParticle.
+            playerMovement.controller.Move(gameObject.transform.forward * meleeDistance * Time.deltaTime);
+            yield return null;
+        }
+        yield return new WaitForSeconds(meleeTime);
+
+        canMelee = true;
+        canShoot = true;
+        meleeCollider.enabled = false;
+        playerMovement.canMove = true;
+        playerMovement.canDash = true;
+
+    }
+
+    public void ResetCombatCombo()
+    {
+        meleeCombatTimer = 0;
+        canMelee = true;
+    }
+    public void ManaRegen()
+    {
+        regenMana = true;
+    }
+
     private void Shoot()
     {
         if (canShoot)
@@ -102,27 +225,45 @@ public class GunSystem : MonoBehaviour
 
                 Invoke("ResetPrimary", weaponSO.ProjectileFireRate);
 
-                if (weaponSO.ExplodingBullets)
+                if (weaponSO.ExplodingBullets && weaponSO.CurrentMana > explodProjMana)
                 {
+                    //currentlyShooting = true;
+                    regenMana = false;
                     var explodingBullets = Instantiate(explodingProjectile, shootPos.position, shootPos.rotation);
                     explodingBullets.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.ProjectileSpeed;
+                    audioManager.Play("Shoot");
+                    weaponSO.CurrentMana -= explodProjMana;
+                    healthBar.SetMana(barMana);
                 }
                 else
                 {
-                    var currentBullet = Instantiate(normalProjectile, shootPos.position, shootPos.rotation);
-                    currentBullet.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.ProjectileSpeed;
-                    //muzzle.Play();
+                    if (weaponSO.CurrentMana > normalProjMana)
+                    {
+                        //currentlyShooting = true;
+                        regenMana = false;
+                        var currentBullet = Instantiate(normalProjectile, shootPos.position, shootPos.rotation);
+                        currentBullet.GetComponent<Rigidbody>().velocity = shootPos.forward * weaponSO.ProjectileSpeed;
+                        //muzzle.Play();
+                        audioManager.Play("Shoot");
+                        weaponSO.CurrentMana -= normalProjMana;
+                        healthBar.SetMana(barMana);
+                    }
+
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1) && canShootBeam)
+
+
+        if (Input.GetKeyDown(KeyCode.E) && canShootBeam)
         {
             LazerBeamAbility();
+            audioManager.Play("Shoot");
         }
 
         if (Input.GetKeyDown(KeyCode.R) && canShootOrb)
         {
             OrbAbility();
+            audioManager.Play("Shoot");
         }
     }
 
@@ -135,9 +276,9 @@ public class GunSystem : MonoBehaviour
         lazerBeam.SetActive(true);
         StartCoroutine(LazerBeam());
         Invoke("BeamCooldown", weaponSO.BeamCooldown);
-
         beamActive = true;
         CameraShake.Instance.ShakeCamera(1.5f, 0.35f);
+        audioManager.Play("Beam");
     }
 
     private void OrbAbility()
@@ -163,6 +304,15 @@ public class GunSystem : MonoBehaviour
     private void ResetPrimary()
     {
         canShootPrimary = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.GetComponent<EnemyStats>().TakeDamage(meleeDamageCurrent);
+            CameraShake.Instance.ShakeCamera(2.5f, 0.2f);
+        }
     }
 
 }
