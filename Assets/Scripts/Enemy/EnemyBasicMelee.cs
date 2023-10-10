@@ -10,6 +10,9 @@ public class EnemyBasicMelee : MonoBehaviour
     EnemyNavigation enemyNav;
     Animator anim;
 
+    public float attackRange;
+    public float sightRange;
+
     private void Start()
     {
         enemyNav = GetComponent<EnemyNavigation>();
@@ -17,12 +20,15 @@ public class EnemyBasicMelee : MonoBehaviour
     }
     public void Attack()
     {
-        attackCollider.enabled = true;
-        enemyNav.navAgent.speed = 0;
-        Invoke("ResetAttack", attackLifeSpan);
         anim.SetBool("Attack", true);
     }
 
+    public void ActuallyAttack()
+    {
+        attackCollider.enabled = true;
+        enemyNav.navAgent.speed = 0;
+        Invoke("ResetAttack", attackLifeSpan);
+    }
     private void ResetAttack()
     {
         attackCollider.enabled = false;

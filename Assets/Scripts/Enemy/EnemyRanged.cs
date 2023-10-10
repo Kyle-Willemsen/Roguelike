@@ -5,23 +5,24 @@ using UnityEngine;
 public class EnemyRanged : MonoBehaviour
 {
     //References
-    private EnemyNavigation enemyNav;
+    private StateManager stateManager;
 
     [SerializeField] GameObject projectile;
     [SerializeField] Transform attackPoint;
     [SerializeField] float attackResetTime;
     [SerializeField] float attackForce;
+    public float attackRange;
+    public float sightRange;
 
 
     public bool canAttack;
-    public bool isTrippleAttack;
 
     Animator anim;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        enemyNav = GetComponent<EnemyNavigation>();
+        stateManager = GetComponent<StateManager>();
         
 
         canAttack = true;
@@ -36,7 +37,8 @@ public class EnemyRanged : MonoBehaviour
     {
         if (canAttack)
         {
-            attackPoint.LookAt(enemyNav.player);
+            Debug.Log("FFS");
+            attackPoint.LookAt(stateManager.player);
             canAttack = false;
             Invoke("ResetAttack", attackResetTime);
 
@@ -49,7 +51,7 @@ public class EnemyRanged : MonoBehaviour
     {
         if (canAttack)
         {
-            attackPoint.LookAt(enemyNav.player);
+            attackPoint.LookAt(stateManager.player);
             anim.SetBool("Attack", true);
             canAttack = false;
 
@@ -65,7 +67,7 @@ public class EnemyRanged : MonoBehaviour
     private void ResetAttack()
     {
         canAttack = true;
-        enemyNav.canMove = true;
+        stateManager.canMove = true;
     }
     private void ResetTrippleAttack()
     {

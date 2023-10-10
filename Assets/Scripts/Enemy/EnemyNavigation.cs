@@ -7,7 +7,6 @@ public class EnemyNavigation : MonoBehaviour
 {
     //References
     [HideInInspector] public NavMeshAgent navAgent;
-    //private Animator anim;
     [HideInInspector] public Transform player;
     PlayerMovement pMovement;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;

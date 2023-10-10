@@ -191,8 +191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 6324417024908449173}
+  manaBar: {fileID: 0}
   healthText: {fileID: 0}
+  manaText: {fileID: 0}
   pStatsSO: {fileID: 0}
+  weaponStatsSO: {fileID: 0}
 --- !u!1 &3162755438245791628
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,8 +561,8 @@ GameObject:
   - component: {fileID: 8294510600672823108}
   - component: {fileID: 8294510600672823111}
   - component: {fileID: 8294510600672823110}
+  - component: {fileID: 8987025313857389022}
   - component: {fileID: 8294510600672823113}
-  - component: {fileID: 8294510600672823109}
   - component: {fileID: 8294510600672823115}
   - component: {fileID: 8294510600672823112}
   - component: {fileID: 8294510600672823114}
@@ -626,6 +629,32 @@ NavMeshAgent:
   m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8987025313857389022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294510600672823117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a372a5950a87c4db4774c984463360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navAgent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerInvisible: 0
+  canMove: 1
+  isRanged: 0
+  isGolem: 0
+  isWizard: 0
+  isBasicMelee: 1
 --- !u!114 &8294510600672823113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,39 +678,6 @@ MonoBehaviour:
   boxCollider: {fileID: 8294510600672823111}
   spawnIcon: {fileID: 4056173423790550687}
   mesh: {fileID: 440922173359484888}
---- !u!114 &8294510600672823109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8294510600672823117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc951abb680d83748b5b9120647da85a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navAgent: {fileID: 0}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  walkPointRange: 4
-  attackRange: 3
-  sightRange: 30
-  isRanged: 0
-  isGolem: 0
-  isWizard: 0
-  canMove: 1
-  playerInvisible: 0
-  isBasicMelee: 1
-  isLunge: 0
-  environmentLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8294510600672823115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +693,8 @@ MonoBehaviour:
   damage: 6
   attackCollider: {fileID: 8294510600672823114}
   attackLifeSpan: 1
+  attackRange: 3
+  sightRange: 38
 --- !u!54 &8294510600672823112
 Rigidbody:
   m_ObjectHideFlags: 0

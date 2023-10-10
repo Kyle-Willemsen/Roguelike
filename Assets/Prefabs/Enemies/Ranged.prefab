@@ -319,8 +319,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 6855647508961170875}
+  manaBar: {fileID: 0}
   healthText: {fileID: 0}
+  manaText: {fileID: 0}
   pStatsSO: {fileID: 0}
+  weaponStatsSO: {fileID: 0}
 --- !u!1 &3126276632129713057
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +443,7 @@ GameObject:
   - component: {fileID: 5831906122864882768}
   - component: {fileID: 5831906122864882769}
   - component: {fileID: 5831906122864882770}
+  - component: {fileID: 8409762215905098118}
   - component: {fileID: 5831906122864882775}
   - component: {fileID: 5831906122864882732}
   - component: {fileID: 11622796420211474}
@@ -544,6 +548,32 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8409762215905098118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831906122864882772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a372a5950a87c4db4774c984463360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navAgent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 72
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerInvisible: 0
+  canMove: 1
+  isRanged: 1
+  isGolem: 0
+  isWizard: 0
+  isBasicMelee: 0
 --- !u!114 &5831906122864882775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,8 +613,9 @@ MonoBehaviour:
   attackPoint: {fileID: 5831906123347078972}
   attackResetTime: 1
   attackForce: 24
+  attackRange: 25
+  sightRange: 38
   canAttack: 0
-  isTrippleAttack: 0
 --- !u!114 &11622796420211474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,7 +623,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5831906122864882772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc951abb680d83748b5b9120647da85a, type: 3}
   m_Name: 

@@ -24,14 +24,13 @@ public class EnemyStats : MonoBehaviour
     public BoxCollider boxCollider;
     public GameObject spawnIcon;
     public GameObject mesh;
-    EnemyNavigation enemyNav;
+    //EnemyNavigation enemyNav;
 
     //[SerializeField] SingleValuesSO roomsEntered;
 
     private void Awake()
     {
-        enemyNav = GetComponent<EnemyNavigation>();
-        enemyNav.enabled = false;
+        //enemyNav = GetComponent<EnemyNavigation>();
         boxCollider.enabled = false;
         mesh.SetActive(false);
         Invoke("SpawnEnemy", 1.4f);
@@ -80,7 +79,7 @@ public class EnemyStats : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        enemyNav.enabled = true;
+        //enemyNav.enabled = true;
         boxCollider.enabled = true;
         mesh.SetActive(true);
         Destroy(spawnIcon);

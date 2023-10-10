@@ -15,6 +15,8 @@ public class GolemAttack : MonoBehaviour
     public bool canThrowRock;
     public GameObject slamIcon;
 
+    public float attackRange;
+    public float sightRange;
 
     private void Start()
     {

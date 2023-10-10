@@ -141,9 +141,7 @@ GameObject:
   - component: {fileID: 3703411653003506148}
   - component: {fileID: 3703411653003506149}
   - component: {fileID: 3703411653003506154}
-  - component: {fileID: 3703411653003506155}
-  - component: {fileID: 3703411653003506152}
-  - component: {fileID: 3703411653003506153}
+  - component: {fileID: 6149873148291272298}
   m_Layer: 0
   m_Name: EnemyCharge
   m_TagString: Untagged
@@ -219,7 +217,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 5, z: 2}
   m_Center: {x: 0, y: 2.51, z: 0}
---- !u!114 &3703411653003506155
+--- !u!114 &6149873148291272298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,55 +226,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3703411653003506158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc951abb680d83748b5b9120647da85a, type: 3}
+  m_Script: {fileID: 11500000, guid: 71a372a5950a87c4db4774c984463360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navAgent: {fileID: 0}
   player: {fileID: 0}
+  pMovement: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  walkPointRange: 10
-  attackRange: 15
-  sightRange: 35
-  isRanged: 0
-  isGolem: 0
-  isWizard: 0
   playerInvisible: 0
-  isBasicMelee: 0
-  isLunge: 1
---- !u!114 &3703411653003506152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3703411653003506158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45c4a3177ed65714a92c539278101631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 100
-  souls: {fileID: 1976317342851034635, guid: bdb43e4e4d4bb284a9049fb2f8917052, type: 3}
-  fragments: {fileID: 1976317342851034635, guid: e8b10c1ff9373314484059c674aeda4e, type: 3}
-  lootHP: {fileID: 9206877563051673848, guid: cb8f11517ded2bc41b8cd60c895c451c, type: 3}
-  lootDropPos: {fileID: 3703411651487850810}
-  soulsRoom: 0
---- !u!114 &3703411653003506153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3703411653003506158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bc6d785d880b4f46938b978aafb8530, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lungeSpeed: 1.5
-  lungeTime: 0.3
+  canMove: 1

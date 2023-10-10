@@ -99,9 +99,28 @@ public class GunSystem : MonoBehaviour
     private void Update()
     {
         Shoot();
-        barMana = Mathf.RoundToInt(weaponSO.CurrentMana);
+        MeleeAttackPress();
+        Parameters();
 
+        barMana = Mathf.RoundToInt(weaponSO.CurrentMana);
         meleeCombatStreak = Mathf.Clamp(meleeCombatStreak, 0, 3);
+    }
+
+    private void MeleeAttackPress()
+    {
+        if (meleeCombatTimer > 0)
+        {
+            meleeCombatTimer -= Time.deltaTime;
+
+        }
+
+        if (meleeCombatTimer <= 0)
+        {
+            meleeCombatTimer = 0;
+            meleeDamageCurrent = meleeDamageBase;
+            meleeCombatStreak = 0;
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse1) && canMelee)
         {
             meleeCombatTimer = meleeCombatTotalTime;
@@ -124,60 +143,8 @@ public class GunSystem : MonoBehaviour
             }
         }
 
-        if (meleeCombatTimer > 0)
-        {
-            meleeCombatTimer -= Time.deltaTime;
 
-        }
-
-        if (meleeCombatTimer <= 0)
-        {
-            meleeCombatTimer = 0;
-            meleeDamageCurrent = meleeDamageBase;
-            meleeCombatStreak = 0;
-        }
-
-        if (!regenMana && weaponSO.CurrentMana < weaponSO.MaxMana)
-        {
-            Invoke("ManaRegen", 1.5f);
-        }
-
-        if (regenMana)
-        {
-            weaponSO.CurrentMana+= Time.deltaTime * 15;
-            //weaponSO.CurrentMana = Mathf.RoundToInt(weaponSO.CurrentMana);
-            
-            healthBar.SetMana(barMana);
-        }
-
-
-        if (weaponSO.CurrentMana >= weaponSO.MaxMana)
-        {
-            weaponSO.CurrentMana = weaponSO.MaxMana;
-        }
-
-        if (!canShootOrb)
-        {
-            orbImage.fillAmount -= 1 / weaponSO.OrbCooldown * Time.deltaTime;
-
-            if (orbImage.fillAmount <= 0)
-            {
-                orbImage.fillAmount = 0;
-                canShootOrb = true;
-            }
-        }
-        if (!canShootBeam)
-        {
-            beamImage.fillAmount -= 1 / weaponSO.BeamCooldown * Time.deltaTime;
-
-            if (beamImage.fillAmount <= 0)
-            {
-                beamImage.fillAmount = 0;
-                canShootBeam = true;
-            }
-        }
     }
-
     private IEnumerator MeleeAttack()
     {
         float startTime = Time.time;
@@ -190,7 +157,6 @@ public class GunSystem : MonoBehaviour
             playerMovement.canMove = false;
             playerMovement.canDash = false;
             meleeParticle.Play();
-            meleeParticle.
             playerMovement.controller.Move(gameObject.transform.forward * meleeDistance * Time.deltaTime);
             yield return null;
         }
@@ -306,6 +272,47 @@ public class GunSystem : MonoBehaviour
         canShootPrimary = true;
     }
 
+    private void Parameters()
+    {
+        if (weaponSO.CurrentMana >= weaponSO.MaxMana)
+        {
+            weaponSO.CurrentMana = weaponSO.MaxMana;
+        }
+
+        if (!canShootOrb)
+        {
+            orbImage.fillAmount -= 1 / weaponSO.OrbCooldown * Time.deltaTime;
+
+            if (orbImage.fillAmount <= 0)
+            {
+                orbImage.fillAmount = 0;
+                canShootOrb = true;
+            }
+        }
+        if (!canShootBeam)
+        {
+            beamImage.fillAmount -= 1 / weaponSO.BeamCooldown * Time.deltaTime;
+
+            if (beamImage.fillAmount <= 0)
+            {
+                beamImage.fillAmount = 0;
+                canShootBeam = true;
+            }
+        }
+
+        if (!regenMana && weaponSO.CurrentMana < weaponSO.MaxMana)
+        {
+            Invoke("ManaRegen", 1.5f);
+        }
+
+        if (regenMana)
+        {
+            weaponSO.CurrentMana += Time.deltaTime * 15;
+            //weaponSO.CurrentMana = Mathf.RoundToInt(weaponSO.CurrentMana);
+
+            healthBar.SetMana(barMana);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")

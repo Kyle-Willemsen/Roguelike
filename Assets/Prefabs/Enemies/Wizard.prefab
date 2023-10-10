@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 1837096935516271773}
   - component: {fileID: 1837096935516271774}
   - component: {fileID: 1837096935516271775}
-  - component: {fileID: 1837096935516271768}
-  - component: {fileID: 1837096935516271769}
+  - component: {fileID: 4657525990428484961}
   - component: {fileID: 1837096935516271770}
+  - component: {fileID: 1837096935516271768}
   - component: {fileID: 8845957860045540234}
   m_Layer: 7
   m_Name: Wizard
@@ -129,6 +129,51 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4657525990428484961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837096935516271771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a372a5950a87c4db4774c984463360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navAgent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerInvisible: 0
+  canMove: 1
+  isRanged: 0
+  isGolem: 0
+  isWizard: 1
+  isBasicMelee: 0
+--- !u!114 &1837096935516271770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837096935516271771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33fb466d23e4f544b8b77b597d91e115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 201683083923324199, guid: 95d04f11e5736184d97fc2438d147c8e, type: 3}
+  attackPoint: {fileID: 1837096935147811990}
+  attackResetTime: 1
+  attackForce: 20
+  attackRange: 20
+  sightRange: 38
+  canAttack: 1
 --- !u!114 &1837096935516271768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,57 +197,6 @@ MonoBehaviour:
   boxCollider: {fileID: 1837096935516271774}
   spawnIcon: {fileID: 2839061557015304448}
   mesh: {fileID: 3572756668044647651}
---- !u!114 &1837096935516271769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837096935516271771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc951abb680d83748b5b9120647da85a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navAgent: {fileID: 0}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  walkPointRange: 7
-  attackRange: 20
-  sightRange: 38
-  isRanged: 0
-  isGolem: 0
-  isWizard: 1
-  canMove: 1
-  playerInvisible: 0
-  isBasicMelee: 0
-  isLunge: 0
-  environmentLayer:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &1837096935516271770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837096935516271771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fb466d23e4f544b8b77b597d91e115, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 201683083923324199, guid: 95d04f11e5736184d97fc2438d147c8e, type: 3}
-  attackPoint: {fileID: 1837096935147811990}
-  attackResetTime: 1
-  attackForce: 20
-  canAttack: 0
-  isTrippleAttack: 1
 --- !u!54 &8845957860045540234
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -478,8 +472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3197163781309374}
+  manaBar: {fileID: 0}
   healthText: {fileID: 0}
+  manaText: {fileID: 0}
   pStatsSO: {fileID: 0}
+  weaponStatsSO: {fileID: 0}
 --- !u!1 &6092585710786378518
 GameObject:
   m_ObjectHideFlags: 0
